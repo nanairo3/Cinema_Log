@@ -28,3 +28,5 @@
 
 #Ignore all .c9 specific files
 /.c9/
+
+/vendor/bundle
