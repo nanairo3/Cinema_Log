@@ -31,6 +31,8 @@ module Environment
     config.generators do |g|
       g.template_engine :slim
       g.javascripts     false
+      g.stylesheets     false
+      g.helper          false
       g.test_framework :rspec,
          fixtures: false,
          view_specs: false,
