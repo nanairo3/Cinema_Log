@@ -27,4 +27,6 @@
 /config/master.key
 
 #Ignore all .c9 specific files
-/.c9/
+/.c9
+
+/vendor/bundle
