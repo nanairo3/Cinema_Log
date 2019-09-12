@@ -1,0 +1,139 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ 
+/* reset ================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font: 100%/1.5 'Avenir Next', 'Hiragino Sans', sans-serif;
+  line-height: 1.7;
+  letter-spacing: 1px;
+}
+
+ul, li {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+}
+
+input {
+  background-color: transparent;
+  outline-width: 0;
+}
+
+form input[type="submit"] {
+  border: none;
+  cursor: pointer;
+}
+
+/* 共通レイアウト ================================ */
+
+body {
+  color: #2d3133;
+  margin: 0;
+  background-color: #8f8e8e;
+  min-height: 1vh;
+}
+
+.main {
+  position: absolute;
+  top: 64px;
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+  background-color: #8f8e8e;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 60px auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  clear: both;
+}
+
+/* ヘッダー ================================ */
+
+header {
+  height: 64px;
+  position: fixed;
+  background-color: #043c78;
+  z-index: 1;
+  width: 100%;
+
+  .header-logo {
+    float: left;
+    padding-left: 20px;
+    color: white;
+    font-size: 22px;
+    line-height: 64px;
+    a{
+      color: white;
+      font-size: 22px;
+    }
+  }
+  
+  .header-menus {
+    float: right;
+    padding-right: 20px;
+    li {
+      float: left;
+      line-height: 64px;
+      font-size: 13px;
+      color: white;
+      padding-left: 15px;
+    }
+    a {
+      float: left;
+      font-size: 13px;
+      color: white;
+    }
+    .fa {
+      padding-right: 5px;
+    }
+    input[type="submit"] {
+      padding: 0 20px;
+      float: left;
+      line-height: 64px;
+      color: white;
+      margin: 0;
+      font-size: 13px;
+    }
+  }
+}
+
+/* フラッシュ ================================ */
+.flash {
+  padding: 10px 0;
+  color: white;
+  background: rgb(251, 170, 88);
+  text-align: center;
+  position: fixed;
+  top: 64px;
+  z-index: 10;
+  width: 100%;
+  border-radius: 0 0 2px 2px;
+  font-size: 14px;
+}
