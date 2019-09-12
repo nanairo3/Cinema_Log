@@ -1,0 +1,15 @@
+doctype html
+html
+  head
+    title
+      | Cinema Log
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  body
+    = render 'layouts/header'
+    = render 'layouts/flash'
+    div.main
+      div.container
+        = yield
