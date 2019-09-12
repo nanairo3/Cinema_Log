@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */
- 
+
 /* reset ================================ */
 
 * {
@@ -136,4 +136,68 @@ header {
   width: 100%;
   border-radius: 0 0 2px 2px;
   font-size: 14px;
+}
+
+/* フォーム================================ */
+.form {
+  max-width: 600px;
+  max-height: 1000px;
+  margin: 0 auto;
+  background-color: #e6e6e6;
+  box-shadow: 0 2px 6px #c1ced7;
+  input {
+    width: 100%;
+    border: 1px solid #d8dadf;
+    padding: 10px;
+    color: #57575f;
+    font-size: 16px;
+    letter-spacing: 2px;
+    border-radius: 2px;
+    background-color: #FFFFFF;
+  }
+  textarea {
+    width: 100%;
+    min-height: 110px;
+    font-size: 16px;
+    letter-spacing: 2px;
+    background-color: #e6e6e6;
+  }
+  input[type="submit"] {
+    background-color: #2562cc;
+    color: white;
+    cursor: pointer;
+    font-weight: 300;
+    width: 120px;
+    border-radius: 2px;
+    margin-top: 8px;
+    margin-bottom: 0;
+    float: right;
+  }
+  
+}
+
+.form-heading {
+  font-weight: 300;
+  margin: 0 0 20px;
+  font-size: 48px;
+  color: #c5c2c2;
+}
+
+.form-body {
+  padding: 30px;
+  label {
+    color: #000000;
+  }
+  .user-destroy{
+    margin-top: 60px;
+  }
+  ＆:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+.form-error {
+  color: #ff4d75;
 }
