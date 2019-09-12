@@ -1,18 +1,26 @@
-inherit_from:
-  - .rubocop_airbnb.yml
+inherit_from: rubocop-todo.yml
+
+# 日本語でのコメントを許可
+AsciiComments:
+  Enabled: false
+
+# 複数行での「lambda」で「->」による省略記法を許可
+Lambda:
+  Enabled: false
+
+# モジュール名::クラス名の定義を許可
+ClassAndModuleChildren:
+  Enabled: false
+
+
+# クラスにコメントを残さない
+Documentation:
+  Enabled: false
+
 
 AllCops:
   Exclude:
-    - 'db/**/*'
-    - 'bin/*'
-    - 'config/environments/*'
-    - 'config/application.rb'
-    - 'config/initializers/*'
-    - 'config/spring.rb'
-    - 'lib/tasks/*'
-    - 'vendor/**/*'
-    - 'path/ruby'
-
-Style/BlockComments:
-  Exclude:
-    - 'spec/spec_helper.rb'
+    - db/schema.rb
+    - config/unicorn.rb
+    - config/unicorn_staging.rb
+    - tmp/**/*
