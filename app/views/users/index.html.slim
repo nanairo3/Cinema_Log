@@ -1,0 +1,7 @@
+div
+  h1.users-heading
+    | ユーザ一覧
+- @users.each do |user|
+  .users-index-item
+    = link_to(user.name,  "/users/#{user.id}")
+hr.users-index-item
