@@ -4,13 +4,15 @@ header
 	ul.header-menus
 		li
 			= link_to "映画一覧", root_path
-		li
-			= link_to "plofile img", "#"
-		li
-			= link_to "user.name", "#"
-		li
-			= link_to "ユーザ一覧", "#"
-		li
-			= link_to "Login", new_user_session_path
-		li
-			= link_to "Logout", "#"
+		- if user_signed_in?
+			li
+				= link_to "plofile img", "#"
+			li
+				= link_to current_user.name, "#"
+			li
+				= link_to "ユーザ一覧", "#"
+			li
+				= link_to "Logout", destroy_user_session_path, method: :delete
+		- else
+			li
+				= link_to "Login", new_user_session_path
