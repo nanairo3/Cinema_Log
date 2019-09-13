@@ -10,7 +10,7 @@ header
 			li
 				= link_to current_user.name, "#"
 			li
-				= link_to "ユーザ一覧", "#"
+				= link_to "ユーザ一覧", users_path
 			li
 				= link_to "Logout", destroy_user_session_path, method: :delete
 		- else
