@@ -1,6 +1,6 @@
 
 .form-heading.user-new
-  | Edit 
+  | Edit
   = resource_name.to_s.humanize
 .form.users-form
   .form-body
@@ -16,7 +16,7 @@
         = f.email_field :email, autofocus: true, autocomplete: "email"
       - if devise_mapping.confirmable? && resource.pending_reconfirmation?
         div
-          | Currently waiting confirmation for: 
+          | Currently waiting confirmation for:
           = resource.unconfirmed_email
       .field
         = f.label :current_password, '現在のパスワード'
