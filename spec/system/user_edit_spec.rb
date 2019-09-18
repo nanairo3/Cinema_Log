@@ -9,7 +9,7 @@ describe 'ユーザ編集機能', type: :system do
   end
 
   describe '正常系' do
-    context '編集成功したとき場合' do
+    context '正しいname,email,current_password.passwordを入力した場合' do
       it 'should have_content アカウント情報を変更しました' do
         fill_in 'user_name', with: 'Taro'
         fill_in 'user_email', with: 'taro@example.com'

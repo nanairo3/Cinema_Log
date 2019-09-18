@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   describe '正常系' do
-    context  'name, email,passwordの場合' do
+    context  '正しくname, email,passwordを入力した場合' do
       let(:user){ build(:user) }
       it { expect(user).to be_valid }
     end
