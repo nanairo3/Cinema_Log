@@ -1,4 +1,11 @@
 {
+    "ace": {
+        "@tabSize": 2,
+        "@useSoftTabs": true
+    },
+    "instance": {
+        "@automaticShutdown": "30"
+    },
     "language": {
         "tern_defs": {
             "json()": {
