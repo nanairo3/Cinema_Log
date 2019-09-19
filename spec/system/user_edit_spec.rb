@@ -10,7 +10,7 @@ describe 'ユーザ編集機能', type: :system do
 
   describe '正常系' do
     context '正しいname,email,current_password.passwordを入力した場合' do
-      it 'should have_content アカウント情報を変更しました' do
+      it '正常にアカウント情報を変更される' do
         fill_in 'user_name', with: 'Taro'
         fill_in 'user_email', with: 'taro@example.com'
         fill_in 'user_current_password', with: user.password
@@ -24,14 +24,14 @@ describe 'ユーザ編集機能', type: :system do
   
   describe '異常系' do
     context 'name未入力の場合' do
-      it 'should have_content Nameを入力してください' do
+      it 'アカウント情報を変更できない' do
         fill_in 'user_name', with: ''
         click_button '更新'
         expect(page).to have_content 'Nameを入力してください'
       end
       
       context 'email未入力の場合' do
-        it 'should have_content Eメールを入力してください' do
+        it 'アカウント情報を変更できない' do
           fill_in 'user_email', with: ''
           click_button '更新'
           expect(page).to have_content 'Eメールを入力してください'
@@ -39,7 +39,7 @@ describe 'ユーザ編集機能', type: :system do
       end
     
       context '現在のパスワードが間違っている場合'
-        it 'should have_content 現在のパスワードは不正な値です' do
+        it 'アカウント情報を変更できない' do
           fill_in 'user_current_password', with: '間違いpassword'
           fill_in 'user_password', with: 'taropassword'
           fill_in 'user_password_confirmation', with: 'taropassword'
@@ -49,7 +49,7 @@ describe 'ユーザ編集機能', type: :system do
       end
       
       context '新しいパスワードと確認が間違っている場合' do
-        it 'should have_content パスワード（確認用）とパスワードの入力が一致しません' do
+        it 'アカウント情報を変更できない' do
           fill_in 'user_current_password', with: 'apassword'
           fill_in 'user_password', with: 'taropassword'
           fill_in 'user_password_confirmation', with: '間違いpassword'
@@ -59,7 +59,7 @@ describe 'ユーザ編集機能', type: :system do
       end
       
       context '新しいパスワードが6文字未満の場合' do
-        it 'should have_content パスワードは6文字以上で入力してください' do
+        it 'アカウント情報を変更できない' do
           fill_in 'user_current_password', with: 'apassword'
           fill_in 'user_password', with: '12345'
           fill_in 'user_password_confirmation', with: '12345'

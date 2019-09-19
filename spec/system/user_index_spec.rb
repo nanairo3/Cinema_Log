@@ -9,7 +9,7 @@ describe 'ユーザ一覧機能', type: :system do
   
   describe '正常系' do
     context 'ユーザ一覧が表示される場合' do
-      it 'should have_content users[0..2].name' do
+      it 'ユーザ一覧が表示される' do
         link = find('a', text: 'ユーザ一覧')
         link.click
         expect(page).to have_content users[0].name
@@ -19,7 +19,7 @@ describe 'ユーザ一覧機能', type: :system do
     end
   
     context 'ユーザ一覧でユーザ名をクリックした場合' do
-      it 'should have_content users[1].name' do
+      it 'クリックしたユーザ名が表示される' do
         link = find('a', text: 'ユーザ一覧')
         link.click
         link = find('a', text: users[1].name)
