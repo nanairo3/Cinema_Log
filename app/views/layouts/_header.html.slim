@@ -6,7 +6,11 @@ header
       = link_to "映画一覧", root_path
     - if user_signed_in?
       li.plofile_image
-        = link_to "plofile img","#"
+        = link_to user_path(current_user) do
+          - if current_user.image.attached? 
+            = image_tag current_user.image
+          - else
+            = image_tag 'https://cinema-log-menta.s3-ap-northeast-1.amazonaws.com/boy.png'
       li
         = link_to current_user.name, user_path(current_user)
       li
