@@ -5,7 +5,7 @@ header
     li
       = link_to "映画一覧", root_path
     - if user_signed_in?
-      li
+      li.plofile_image
         = link_to "plofile img","#"
       li
         = link_to current_user.name, user_path(current_user)
