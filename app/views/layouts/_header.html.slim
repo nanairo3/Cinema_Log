@@ -10,7 +10,7 @@ header
           - if current_user.image.attached? 
             = image_tag current_user.image
           - else
-            = image_tag 'https://cinema-log-menta.s3-ap-northeast-1.amazonaws.com/boy.png'
+            = image_tag "boy.png"
       li
         = link_to current_user.name, user_path(current_user)
       li

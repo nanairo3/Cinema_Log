@@ -2,7 +2,7 @@
   - if current_user.image.attached? 
     = image_tag current_user.image
   - else
-    = image_tag 'https://cinema-log-menta.s3-ap-northeast-1.amazonaws.com/boy.png'
+    = image_tag "boy.png"
   h2
     = @user.name
   - if current_user && @user.id == current_user.id
