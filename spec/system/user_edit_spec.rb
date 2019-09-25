@@ -12,7 +12,7 @@ describe 'ユーザ編集機能', type: :system do
     context '正しいimage,name,email,current_password.passwordを入力した場合' do
       it '正常にアカウント情報を変更される' do
         file_path = Rails.root.join('spec', 'images', 'test_sample.png')
-        attach_file 'image', file_path
+        attach_file 'user_image', file_path
         fill_in 'user_name', with: 'Taro'
         fill_in 'user_email', with: 'taro@example.com'
         fill_in 'user_current_password', with: user.password
