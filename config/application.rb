@@ -17,13 +17,6 @@ require "sprockets/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module CinemaLog
-  class Application < Rails::Application
-    config.autoload_paths += %W(#{config.root}/batch)
-    config.autoload_paths += Dir["#{config.root}/batch/**/"]
-  end
-end
-
 module Environment
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
@@ -34,6 +27,9 @@ module Environment
 
     config.i18n.default_locale = :ja
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
+    
+    config.autoload_paths += %W(#{config.root}/batch)
+    config.autoload_paths += Dir["#{config.root}/batch/**/"]
 
     config.generators do |g|
       g.template_engine :slim

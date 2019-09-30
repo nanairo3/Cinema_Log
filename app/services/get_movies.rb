@@ -7,6 +7,7 @@ page = 1
 region = "JP"
 
 connection = Faraday::Connection.new('https://api.themoviedb.org/3/movie')
+
 response = connection.get "/now_playing" do |request|
  request.params[:api_key] =  api_key
  request.params[:language] = language
