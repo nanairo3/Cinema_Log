@@ -8,9 +8,25 @@ class GetMovies
     page = 1
     region = "JP"
     now_playing = ["start set"]
+    up_coming = ["start set"]
     
     #ENV["SSL_CERT_PATH"] = "/etc/pki/tls"
     connection = Faraday.new("https://api.themoviedb.org") 
+    
+    response = connection.get "/3/genre/movie/list" do |request|
+      request.params[:api_key] =  api_key
+      request.params[:language] = language
+    end
+    genre_json = JSON.parse(response.body)["genres"]
+    genre_json.each do |genre|
+      if response.success?
+        if Genre.find_by_id(genre['id']).nil?
+          Genre.create(id: genre['id'], name: genre['name'])
+        end
+      else
+        puts "通信エラー: #{response.status}"
+      end
+    end
     
     while now_playing != []
       response = connection.get "/3/movie/now_playing" do |request|
@@ -36,19 +52,30 @@ class GetMovies
       page += 1
     end
     
-    response = connection.get "/3/genre/movie/list" do |request|
-      request.params[:api_key] =  api_key
-      request.params[:language] = language
-    end
-    genre_json = JSON.parse(response.body)["genres"]
-    genre_json.each do |genre|
+    page = 1
+    
+    while up_coming != []
+       response = connection.get "/3/movie/upcoming" do |request|
+         request.params[:api_key] =  api_key
+         request.params[:language] = language
+         request.params[:page] = page
+         request.params[:region] = region
+        end
+      
       if response.success?
-        if Genre.find_by_id(genre['id']).nil?
-          Genre.create(id: genre['id'], name: genre['name'])
+        up_coming = JSON.parse(response.body)['results']
+        up_coming.each do |up|
+          if Movie.find_by_id(up['id']).nil? && up['poster_path']
+            Movie.create(id: up['id'], title: up['title'], original_title: up['original_title'],
+                       poster_path: up['poster_path'], popularity: up['popularity'], release_date: up['release_date'],
+                       overview: up['overview'])
+          end
         end
       else
         puts "通信エラー: #{response.status}"
       end
+      
+      page += 1
     end
     
     
@@ -57,21 +84,31 @@ class GetMovies
       response = connection.get "/3/movie/#{movie.id}" do |request|
         request.params[:api_key] =  api_key
         request.params[:language] = language
-        request.params[:append_to_response] = "videos"
       end
       
       if response.success?
         detail = JSON.parse(response.body)
-        puts detail['videos']['results']
-        if movie.run_time.nil? || movie.video_key.nil?
+        if movie.run_time.nil?
           movie.run_time = detail['runtime']
-          movie.video_key = detail['videos']['results']["key"] if detail['videos']['results'] != []
           movie.save
         end
       else
         puts "通信エラー: #{response.status}"
       end
+    
+      response = connection.get "/3/movie/#{movie.id}/videos" do |request|
+        request.params[:api_key] =  api_key
+      end
+      if response.success?
+        video = JSON.parse(response.body)['results']
+        if movie.video_key.nil? && video != []
+          movie.video_key = video[0]['key']
+          movie.save
+        end
+      else
+        puts "通信エラー: #{response.status}"
+      end
+      
     end
   end
-
 end

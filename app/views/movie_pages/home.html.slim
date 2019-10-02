@@ -1,0 +1,20 @@
+.about-main
+    .cinema-index-item
+      .cinema-index-item
+        h2.cinema-heading
+          | 注目の映画
+        - @movies.each do |movie|
+          .cinema_image
+            = link_to "/movie_pages/#{movie.id}" do
+              - if movie.release_date.to_date > Date.today
+                = image_tag "https://image.tmdb.org/t/p/w200#{movie.poster_path}",class: "img-responsive", alt: "movie pic"
+                .caption
+                  p
+                    = movie.title
+              - else
+                = image_tag "https://image.tmdb.org/t/p/w200#{movie.poster_path}",class: "img-responsive", alt: "movie pic"
+                = image_tag "上映中.png", class: "now-img", alt: "movie pic"
+                .caption
+                  p
+                    = movie.title
+          
