@@ -78,3 +78,5 @@ gem 'faraday'
 gem "faraday-detailed_logger"
 
 gem 'whenever', require: false
+
+gem 'kaminari'

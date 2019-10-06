@@ -3,6 +3,9 @@
       .cinema-index-item
         h2.cinema-heading
           | 注目の映画
+        h5.cinema-heading
+          = paginate @movies
+          = page_entries_info @movies
         - @movies.each do |movie|
           .cinema_image
             = link_to "/movie_pages/#{movie.id}" do
@@ -17,4 +20,3 @@
                 .caption
                   p
                     = movie.title
-          
