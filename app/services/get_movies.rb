@@ -10,7 +10,6 @@ class GetMovies
     now_playing = ["start set"]
     up_coming = ["start set"]
     
-    #ENV["SSL_CERT_PATH"] = "/etc/pki/tls"
     connection = Faraday.new("https://api.themoviedb.org") 
     
     response = connection.get "/3/genre/movie/list" do |request|
