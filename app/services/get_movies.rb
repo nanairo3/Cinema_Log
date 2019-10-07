@@ -43,6 +43,10 @@ class GetMovies
             Movie.create(id: now['id'], title: now['title'], original_title: now['original_title'],
                          poster_path: now['poster_path'], popularity: now['popularity'], release_date: now['release_date'],
                          overview: now['overview'])
+                         
+            now['genre_ids'].each do |now_genre|
+              MovieGenre.create(movie_id: now['id'], genre_id: now_genre)
+            end
           end
         end
       else
@@ -69,6 +73,10 @@ class GetMovies
             Movie.create(id: up['id'], title: up['title'], original_title: up['original_title'],
                        poster_path: up['poster_path'], popularity: up['popularity'], release_date: up['release_date'],
                        overview: up['overview'])
+                       
+            up['genre_ids'].each do |up_genre|
+              MovieGenre.create(movie_id: up['id'], genre_id: up_genre)
+            end
           end
         end
       else
