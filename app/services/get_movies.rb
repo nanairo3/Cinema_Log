@@ -2,24 +2,29 @@ require 'faraday'
 require 'json'
 
 class GetMovies
-  
-  def self.now_playing_json(connection, api_key, language, page, region)
-    response = connection.get "/3/movie/now_playing" do |request|
-     request.params[:api_key] =  api_key
-     request.params[:language] = language
-     request.params[:page] = page
-     request.params[:region] = region
+  API_KEY = Rails.application.credentials.api_key
+  LANGUAGE = "ja-JP"
+  PAGE = 1
+  REGION = "JP"
+  CONNECTION = Faraday.new("https://api.themoviedb.org") 
+
+  def self.now_playing_json()
+    response = CONNECTION.get "/3/movie/now_playing" do |request|
+     request.params[:api_key] =  API_KEY
+     request.params[:language] = LANGUAGE
+     request.params[:page] = PAGE
+     request.params[:region] = REGION
     end
     
     count = JSON.parse(response.body)['total_pages']
     result = []
     
     count.times do |timecount|
-      response = connection.get "/3/movie/now_playing" do |request|
-       request.params[:api_key] =  api_key
-       request.params[:language] = language
+      response = CONNECTION.get "/3/movie/now_playing" do |request|
+       request.params[:api_key] =  API_KEY
+       request.params[:language] = LANGUAGE
        request.params[:page] = timecount + 1
-       request.params[:region] = region
+       request.params[:region] = REGION
       end
       
       if response.success?
@@ -44,13 +49,8 @@ class GetMovies
   end
   
   def self.interface
-    api_key = Rails.application.credentials.api_key
-    language = "ja-JP"
-    page = 1
-    region = "JP"
-    connection = Faraday.new("https://api.themoviedb.org") 
     
-    json = now_playing_json(connection, api_key, language, page, region)
+    json = now_playing_json()
     json.each do |json|
       now_playing_save(json)
     end
