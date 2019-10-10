@@ -34,10 +34,10 @@ class GetMovies
         puts "通信エラー: #{response.status}"
       end
     end
-    return result.flatten
+    result.flatten
   end
   
-  def self.now_upcomming_save(json)
+  def self.get_movie_save(json)
     if Movie.find_by_id(json['id']).nil?
       Movie.create(id: json['id'], title: json['title'] || '', original_title: json['original_title'] || '',
                      poster_path: json['poster_path'] || '' , popularity: json['popularity'], release_date: json['release_date'],
@@ -57,7 +57,7 @@ class GetMovies
     json = get_movie_json("now_playing")
     json += get_movie_json("upcoming")
     json.each do |json|
-      now_upcomming_save(json)
+      get_movie_save(json)
     end
   end
     
