@@ -18,7 +18,7 @@
     
     img{
       width: 100%;
-      height: auto;
+      height: 439px;
     }
     p {
       font-size: 14px;
@@ -30,11 +30,17 @@
     a {
       text-decoration: none;
     }
-    .now-img{
-      position: absolute;
-      top: 0;
-      left: 8px;
-      width: 12%;
+    .cinema_image_now{
+      img {
+        width: 100%;
+        height: auto;
+      }
+      .now-img{
+        position: absolute;
+        top: 0;
+        left: 8px;
+        width: 12%;
+      }
     }
   }
 }
