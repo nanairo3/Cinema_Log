@@ -37,9 +37,9 @@ class GetMovies
   end
   
   def self.now_playing_save(json)
-    if Movie.find_by_id(json['id']).nil? && json['poster_path']
-      Movie.create(id: json['id'], title: json['title'], original_title: json['original_title'],
-                     poster_path: json['poster_path'], popularity: json['popularity'], release_date: json['release_date'],
+    if Movie.find_by_id(json['id']).nil?
+      Movie.create(id: json['id'], title: json['title'] || '', original_title: json['original_title'] || '',
+                     poster_path: json['poster_path'] || '' , popularity: json['popularity'], release_date: json['release_date'],
                      overview: json['overview'])
                      
         json['genre_ids'].each do |genre_id|
