@@ -36,19 +36,16 @@ class GetMovies
   end
   
   def self.get_movie_save(json)
-    if Movie.find_by_id(json['id']).nil?
-      Movie.create(id: json['id'], title: json['title'] || '', original_title: json['original_title'] || '',
-                     poster_path: json['poster_path'] || '' , popularity: json['popularity'], release_date: json['release_date'],
-                     overview: json['overview'])
-                     
-        json['genre_ids'].each do |genre_id|
-          MovieGenre.create(movie_id: json['id'], genre_id: genre_id)
-      end
-    else
-      Movie.find_by_id(json['id']).update(:title => json['title'] || '', :original_title => json['original_title'] || '',
-                                              :poster_path => json['poster_path'] || '', :popularity => json['popularity'],
-                                              :release_date => json['release_date'], :overview => json['overview'])
-    end
+    movie = Movie.find_or_initialize_by(id: json["id"])
+    movie.assign_attributes(
+      title: json["title"] || "",
+      original_title: json["original_title"] || "",
+      poster_path: json["poster_path"] || "",
+      popularity: json["popularity"],
+      release_date: json["release_date"],
+      overview: json["overview"],
+    )
+    movie.save!
   end
   
   def self.interface
