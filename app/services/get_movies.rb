@@ -8,7 +8,7 @@ class GetMovies
   REGION = "JP"
   CONNECTION = Faraday.new("https://api.themoviedb.org") 
 
-  def self.now_playing_json()
+  def self.now_playing_json
     response = CONNECTION.get "/3/movie/now_playing" do |request|
      request.params[:api_key] =  API_KEY
      request.params[:language] = LANGUAGE
@@ -42,15 +42,15 @@ class GetMovies
                      poster_path: json['poster_path'], popularity: json['popularity'], release_date: json['release_date'],
                      overview: json['overview'])
                      
-        json['genre_ids'].each do |genre|
-          MovieGenre.create(movie_id: json['id'], genre_id: genre)
+        json['genre_ids'].each do |genre_id|
+          MovieGenre.create(movie_id: json['id'], genre_id: genre_id)
       end
     end
   end
   
   def self.interface
     
-    json = now_playing_json()
+    json = now_playing_json
     json.each do |json|
       now_playing_save(json)
     end
