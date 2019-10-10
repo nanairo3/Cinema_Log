@@ -28,12 +28,10 @@ class GetMovies
         request.params[:region] = REGION
       end
       
-      if response.success?
-        result.push(JSON.parse(response.body)['results'])
-      else
-        puts "通信エラー: #{response.status}"
-      end
+      raise "通信エラー: #{response.status}" unless response.success?
+      result.push(JSON.parse(response.body)['results'])
     end
+    
     result.flatten
   end
   
