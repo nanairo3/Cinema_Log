@@ -8,8 +8,8 @@ class GetMovies
   REGION = "JP"
   CONNECTION = Faraday.new("https://api.themoviedb.org") 
 
-  def self.now_playing_json
-    response = CONNECTION.get "/3/movie/now_playing" do |request|
+  def self.now_playing_json(get_mode)
+    response = CONNECTION.get "/3/movie/#{get_mode}" do |request|
      request.params[:api_key] =  API_KEY
      request.params[:language] = LANGUAGE
      request.params[:page] = PAGE
@@ -17,13 +17,14 @@ class GetMovies
     end
     
     count = JSON.parse(response.body)['total_pages']
-    result = []
+    result = JSON.parse(response.body)['results']
+    renge=2..count
     
-    count.times do |timecount|
-      response = CONNECTION.get "/3/movie/now_playing" do |request|
+    renge.each do |page|
+      response = CONNECTION.get "/3/movie/#{get_mode}" do |request|
        request.params[:api_key] =  API_KEY
        request.params[:language] = LANGUAGE
-       request.params[:page] = timecount + 1
+       request.params[:page] =  page
        request.params[:region] = REGION
       end
       
@@ -50,7 +51,7 @@ class GetMovies
   
   def self.interface
     
-    json = now_playing_json
+    json = now_playing_json("now_playing")
     json.each do |json|
       now_playing_save(json)
     end
