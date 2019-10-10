@@ -37,7 +37,7 @@ class GetMovies
     return result.flatten
   end
   
-  def self.now_playing_save(json)
+  def self.now_upcomming_save(json)
     if Movie.find_by_id(json['id']).nil?
       Movie.create(id: json['id'], title: json['title'] || '', original_title: json['original_title'] || '',
                      poster_path: json['poster_path'] || '' , popularity: json['popularity'], release_date: json['release_date'],
@@ -54,11 +54,10 @@ class GetMovies
   end
   
   def self.interface
-    
     json = now_playing_json("now_playing")
     json += now_playing_json("upcoming")
     json.each do |json|
-      now_playing_save(json)
+      now_upcomming_save(json)
     end
   end
     
