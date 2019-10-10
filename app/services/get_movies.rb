@@ -10,10 +10,10 @@ class GetMovies
 
   def self.get_movie_json(get_mode)
     response = CONNECTION.get "/3/movie/#{get_mode}" do |request|
-     request.params[:api_key] =  API_KEY
-     request.params[:language] = LANGUAGE
-     request.params[:page] = PAGE
-     request.params[:region] = REGION
+      request.params[:api_key] = API_KEY
+      request.params[:language] = LANGUAGE
+      request.params[:page] = PAGE
+      request.params[:region] = REGION
     end
     
     count = JSON.parse(response.body)['total_pages']
@@ -22,10 +22,10 @@ class GetMovies
     
     renge.each do |page|
       response = CONNECTION.get "/3/movie/#{get_mode}" do |request|
-       request.params[:api_key] =  API_KEY
-       request.params[:language] = LANGUAGE
-       request.params[:page] =  page
-       request.params[:region] = REGION
+        request.params[:api_key] = API_KEY
+        request.params[:language] = LANGUAGE
+        request.params[:page] =  page
+        request.params[:region] = REGION
       end
       
       if response.success?
