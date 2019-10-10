@@ -46,12 +46,17 @@ class GetMovies
         json['genre_ids'].each do |genre_id|
           MovieGenre.create(movie_id: json['id'], genre_id: genre_id)
       end
+    else
+      Movie.find_by_id(json['id']).update(:title => json['title'] || '', :original_title => json['original_title'] || '',
+                                              :poster_path => json['poster_path'] || '', :popularity => json['popularity'],
+                                              :release_date => json['release_date'], :overview => json['overview'])
     end
   end
   
   def self.interface
     
     json = now_playing_json("now_playing")
+    json += now_playing_json("upcoming")
     json.each do |json|
       now_playing_save(json)
     end
