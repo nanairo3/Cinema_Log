@@ -2,16 +2,17 @@ require 'rails_helper'
 
 describe '映画情報取得API' do
   describe '正常系' do
+    let!(:json){ create(:movie) }
+    
     before do
-      get_movie_mock = double('Get Movie')
-      expect(get_movie_mock).to receive(:get_movie_json, :get_movie_save)
-      
-      get_movie = GetMovies
-      allow(get_movie).to receive(:get_movie_json, :get_movie_save).and_return(get_movie_mock)
+      allow(GetMovies).to receive(:get_movie_save).and_return('get movie save mock')
     end
     
-    content 'get_movie_saveにjsonを渡した場合'do
-      it ''
+    context 'get_movie_saveにjsonを渡した場合'do
+      it 'エラーなく保存できる' do
+        expect{ GetMovies.get_movie_save(json) }.not_to raise_error
+      end
     end
+    
   end
 end

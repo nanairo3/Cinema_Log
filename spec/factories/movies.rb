@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :movie do
-    json {
       {
         id: 111111,
         title: "title",
@@ -11,6 +10,5 @@ FactoryBot.define do
         overview: "overview",
         video_: "video_key",
       }
-    }
   end
 end
