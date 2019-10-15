@@ -16,6 +16,7 @@ class GetMovies
       request.params[:region] = REGION
     end
     
+    raise "通信エラー： #{response.status}" unless response.success? 
     count = JSON.parse(response.body)['total_pages']
     result = JSON.parse(response.body)['results']
     renge = 2..count
@@ -48,7 +49,7 @@ class GetMovies
     movie.save!
   end
   
-  def self.interface
+  def self.api_execution
     json = get_movie_json("now_playing")
     json += get_movie_json("upcoming")
     json.each do |json|
