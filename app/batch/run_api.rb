@@ -3,6 +3,6 @@ class RunApi
   end
 
   def self.exec
-    rails runner ./app/services/get_movies.rb
+    rails runner GetMovies.api_execution
   end
 end
