@@ -7,8 +7,7 @@ FactoryBot.define do
       "poster_path" => "poster_path",
       "popularity" => 1,
       "release_date" => "release_date",
-      "overview" => "overview",
-      "video_key" => "video_key"
+      "overview" => "overview"
     }]
   end
 end

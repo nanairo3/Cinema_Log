@@ -11,44 +11,47 @@ describe '映画情報取得API' do
             "id" => 111111,
             "title" =>"now_playing",
             "original_title" => "now_playing",
-            "poster_path" => "poster_path",
+            "poster_path" => "1poster_path",
             "popularity" => 1,
-            "release_date" => "release_date",
-            "overview" => "overview",
-            "video_key" => "video_key"
+            "release_date" => "1release_date",
+            "overview" => "1overview"
           }]
         elsif get_mode == 'upcoming'
           [{
             "id" => 222222,
             "title" =>"upcoming",
             "original_title" => "upcoming",
-            "poster_path" => "poster_path",
+            "poster_path" => "2poster_path",
             "popularity" => 1,
-            "release_date" => "release_date",
-            "overview" => "overview",
-            "video_key" => "video_key"
+            "release_date" => "2release_date",
+            "overview" => "2overview"
           }]
         end
       end
       expect(Movie.count).to eq 1
+      GetMovies.api_execution
     end
     
     it '映画数が全体で2件となっていること' do
-      GetMovies.api_execution
       expect(Movie.count).to eq 2
     end
 
     it 'APIで追加したデータが、正しく保存されていること' do
-      GetMovies.api_execution
-      expect(Movie.find(111111).title).to eq 'now_playing'
       expect(Movie.find(222222).title).to eq 'upcoming'
+      expect(Movie.find(222222).original_title).to eq 'upcoming'
+      expect(Movie.find(222222).poster_path).to eq '2poster_path'
+      expect(Movie.find(222222).popularity).to eq 1
+      expect(Movie.find(222222).release_date).to eq '2release_date'
+      expect(Movie.find(222222).overview).to eq '2overview'
     end
 
     it '既存の映画レコードが更新されていること' do
-      old = Movie.find(111111)
-      GetMovies.api_execution
-      new = Movie.find(111111)
-      expect(new.title).not_to eq old.title
+      expect(Movie.find(111111).title).to eq 'now_playing'
+      expect(Movie.find(111111).original_title).to eq 'now_playing'
+      expect(Movie.find(111111).poster_path).to eq '1poster_path'
+      expect(Movie.find(111111).popularity).to eq 1
+      expect(Movie.find(111111).release_date).to eq '1release_date'
+      expect(Movie.find(111111).overview).to eq '1overview'
     end
     
   end
