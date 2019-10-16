@@ -1,21 +1,5 @@
 require 'rails_helper'
 
-FactoryBot.define do
-  factory :movie do
-    [{
-      "id" => 111111,
-      "title" =>"movie",
-      "original_title" => "movie",
-      "poster_path" => "poster_path",
-      "popularity" => 1,
-      "release_date" => "release_date",
-      "overview" => "overview",
-      "video_key" => "video_key"
-    }]
-  end
-end
-
-
 describe '映画情報取得API' do
   describe '.api_execution' do
     let!(:exist_movie) { create :movie, id: 111111 }
