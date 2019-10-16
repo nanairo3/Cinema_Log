@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
 
-  root 'movie_pages#home'
+  root 'movie_pages#index'
 
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions'
   }
   
-  resources :movie_pages, only: [:home, :show]
+  resources :movie_pages, only: [:index, :show]
   resources :users, only: [:index, :show]
 
 
