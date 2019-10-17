@@ -5,7 +5,7 @@ FactoryBot.define do
       sequence(:original_title) { |n| "#{n}movie"}
       poster_path { "poster_path" }
       popularity { 1 }
-      release_date { "release_date" }
+      release_date { "2019-10-17" }
       overview { "overview" }
   end
 end
