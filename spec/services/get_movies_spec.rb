@@ -37,21 +37,23 @@ describe '映画情報取得API' do
     end
 
     it 'APIで追加したデータが、正しく保存されていること' do
-      expect(Movie.find(222222).title).to eq 'upcoming'
-      expect(Movie.find(222222).original_title).to eq 'upcoming'
-      expect(Movie.find(222222).poster_path).to eq '2poster_path'
-      expect(Movie.find(222222).popularity).to eq 1
-      expect(Movie.find(222222).release_date).to eq '2release_date'
-      expect(Movie.find(222222).overview).to eq '2overview'
+      add_movie = Movie.find(222222)
+      expect(add_movie.title).to eq 'upcoming'
+      expect(add_movie.original_title).to eq 'upcoming'
+      expect(add_movie.poster_path).to eq '2poster_path'
+      expect(add_movie.popularity).to eq 1
+      expect(add_movie.release_date).to eq '2release_date'
+      expect(add_movie.overview).to eq '2overview'
     end
 
     it '既存の映画レコードが更新されていること' do
-      expect(Movie.find(111111).title).to eq 'now_playing'
-      expect(Movie.find(111111).original_title).to eq 'now_playing'
-      expect(Movie.find(111111).poster_path).to eq '1poster_path'
-      expect(Movie.find(111111).popularity).to eq 1
-      expect(Movie.find(111111).release_date).to eq '1release_date'
-      expect(Movie.find(111111).overview).to eq '1overview'
+      update_movie = Movie.find(111111)
+      expect(update_movie.title).to eq 'now_playing'
+      expect(update_movie.original_title).to eq 'now_playing'
+      expect(update_movie.poster_path).to eq '1poster_path'
+      expect(update_movie.popularity).to eq 1
+      expect(update_movie.release_date).to eq '1release_date'
+      expect(update_movie.overview).to eq '1overview'
     end
     
   end
