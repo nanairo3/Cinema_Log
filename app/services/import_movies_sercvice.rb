@@ -1,7 +1,7 @@
 require 'faraday'
 require 'json'
 
-class GetMovies
+class ImportMoviesSercvice
   API_KEY = Rails.application.credentials.api_key
   LANGUAGE = "ja-JP"
   PAGE = 1

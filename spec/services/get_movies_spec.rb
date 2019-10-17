@@ -5,7 +5,7 @@ describe '映画情報取得API' do
     let!(:exist_movie) { create :movie }
     
     before do
-      allow(GetMovies).to receive(:get_movie_json) do |get_mode|
+      allow(ImportMoviesSercvice).to receive(:get_movie_json) do |get_mode|
         if get_mode == 'now_playing'
           [{
             "id" => 111111,
@@ -29,7 +29,7 @@ describe '映画情報取得API' do
         end
       end
       expect(Movie.count).to eq 1
-      GetMovies.api_execution
+      ImportMoviesSercvice.api_execution
     end
     
     it '映画数が全体で2件となっていること' do
