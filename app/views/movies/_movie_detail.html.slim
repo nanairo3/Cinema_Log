@@ -1,0 +1,43 @@
+.col-md-11[style="padding-left:20px;padding-right:20px;"]
+  h1
+    = @movie.title
+  h2.center
+    | 原題：
+    = @movie.original_title
+  p
+    strong
+    | 上映日：
+    = @movie.release_date
+  
+  - unless @movie.run_time.blank?
+    p
+      strong
+        | 上映時間：
+      = @movie.run_time 
+      | 分
+  p
+    strong
+      | ジャンル：
+      - @movie.genres.each do |genre|
+        span
+        = genre.name
+        | 、
+  p
+    strong
+      | ストーリ：
+      - if @movie.overview == ""
+        span
+        | 申し訳ございませんが、情報がありません。
+      - else
+        span
+          = @movie.overview
+    
+  - unless @movie.video_key.blank?
+    .trailers
+     p
+    strong
+      | 予告動画：
+      .row
+        .col-md-6.col-sm-6
+          - iframe = content_tag(:iframe, '', width: 300, height: 166, src: "https://www.youtube.com/embed/#{@movie.video_key}", frameborder: 0, allowfullscreen: true)
+          = content_tag(:div, iframe, class: "youtube-container")

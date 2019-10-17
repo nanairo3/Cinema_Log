@@ -1,0 +1,17 @@
+ja:
+  helpers:
+    page_entries_info:
+      more_pages:
+        display_entries: "<b>%{total}</b>件中の映画を表示しています <b>%{first} - %{last}</b>"
+      one_page:
+        display_entries:
+          one: "<b>%{count}</b>レコード表示中です %{entry_name}"
+          other: "<b>%{count}</b>レコード表示中です %{entry_name}"
+          zero: "レコードが見つかりませんでした %{entry_name}"
+  views:
+    pagination:
+      first: "&laquo; "
+      last: " &raquo;"
+      next: "次 &rsaquo;"
+      previous: "&lsaquo; 前"
+      truncate: "&hellip;"
