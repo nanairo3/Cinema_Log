@@ -1,5 +1,5 @@
 class MovieInfomationPeriodicallyImportBatch
   def self.exec
-    MoviesAcquisitionApiSercvice.api_execution
+    MoviesAcquisitionApiSercvice.import
   end
 end

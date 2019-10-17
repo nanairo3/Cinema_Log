@@ -9,7 +9,7 @@ class MoviesAcquisitionApiSercvice
   CONNECTION = Faraday.new("https://api.themoviedb.org")
   
   class << self
-    def api_execution
+    def import
       json = get_movie_json("now_playing")
       json += get_movie_json("upcoming")
       json.each do |json|

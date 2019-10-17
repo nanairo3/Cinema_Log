@@ -29,7 +29,7 @@ describe '映画情報取得API' do
         end
       end
       expect(Movie.count).to eq 1
-      MoviesAcquisitionApiSercvice.api_execution
+      MoviesAcquisitionApiSercvice.import
     end
     
     it '映画数が全体で2件となっていること' do
