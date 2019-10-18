@@ -25,6 +25,5 @@ describe '映画ホームページ', type: :system do
         expect(page).to have_content example_movie.overview
       end
     end
-    
   end
 end
