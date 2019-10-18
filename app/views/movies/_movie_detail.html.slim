@@ -6,7 +6,7 @@
     = @movie.original_title
   p
     strong
-    | 上映日：
+      | 上映日：
     = @movie.release_date
   
   - unless @movie.run_time.blank?
@@ -18,25 +18,25 @@
   p
     strong
       | ジャンル：
-      - @movie.genres.each do |genre|
-        span
-        = genre.name
-        | 、
+    - @movie.genres.each do |genre|
+      span
+      = genre.name
+      | 、
   p
     strong
-      | ストーリ：
-      - if @movie.overview == ""
-        span
-        | 申し訳ございませんが、情報がありません。
-      - else
-        span
-          = @movie.overview
+      | ストーリ：<br>
+    - if @movie.overview == ""
+      span
+      | 申し訳ございませんが、情報がありません。
+    - else
+      span
+      = @movie.overview
     
   - unless @movie.video_key.blank?
     .trailers
      p
     strong
-      | 予告動画：
+      | <br>予告動画：
       .row
         .col-md-6.col-sm-6
           - iframe = content_tag(:iframe, '', width: 300, height: 166, src: "https://www.youtube.com/embed/#{@movie.video_key}", frameborder: 0, allowfullscreen: true)
