@@ -8,12 +8,11 @@ describe '映画ホームページ', type: :system do
   end
   
   describe '正常系' do
-      it '映画詳細画面の表示情報が正しい' do
-        expect(page).to have_content example_movie.title
-        expect(page).to have_content example_movie.original_title
-        expect(page).to have_content example_movie.release_date
-        expect(page).to have_content example_movie.overview
-      end
-    
+    it '映画詳細画面の表示情報が正しい' do
+      expect(page).to have_content example_movie.title
+      expect(page).to have_content example_movie.original_title
+      expect(page).to have_content example_movie.release_date
+      expect(page).to have_content example_movie.overview
+    end
   end
 end
