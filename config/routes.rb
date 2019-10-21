@@ -1,10 +1,4 @@
 Rails.application.routes.draw do
-
-  get 'posts/new'
-  get 'posts/create'
-  get 'posts/edit'
-  get 'posts/update'
-  get 'posts/destroy'
   root 'movies#index'
 
   devise_for :users, controllers: {
@@ -14,7 +8,7 @@ Rails.application.routes.draw do
   
   resources :movies, only: [:index, :show]
   resources :users, only: [:index, :show]
-
+  resources :posts
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
