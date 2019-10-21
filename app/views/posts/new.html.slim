@@ -1,2 +1,14 @@
-h1 Posts#new
-p Find me in app/views/posts/new.html.slim
+.content1
+  = image_tag @cinema.image
+.content2
+  .form-heading
+    | 投稿する
+  .form
+    .form-body
+      - @post.errors.full_messages.each do |message|
+        .form-error
+          = message
+      = form_with model: @post, url: "/posts/#{@cinema.id}/create", local: true do |form|
+        = form.label :content, 'コメント'
+        = form.text_area :content
+        = form.submit "投稿", class: 'btn btn-primary'

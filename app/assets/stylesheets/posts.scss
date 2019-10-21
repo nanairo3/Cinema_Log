@@ -1,0 +1,50 @@
+.content1 {
+  text-align: center;
+  width: 40%;
+  float: left;
+  img {
+    height: 360px;
+    width: 260px;
+  }
+  a:hover {
+    color: #000000;
+  }
+}
+
+.content2 {
+  width: 60%;
+  float: left;
+
+
+.post-content {
+  margin: 5px 0;
+  background-color: #EEEEEE;
+  border-radius: 2%;
+  hr {
+    margin: 5px 0 7px 0;
+  }
+  .post-user-name {
+    padding: 10px 0px 0px 20px;
+    a{
+      font-weight: 600;
+      font-size: 18px;
+      color: #000000;
+      &:hover{
+        color: #3ecdc6;
+      }
+    }
+  }
+  p {
+    margin-left: 5px;
+    font-size: 5px;
+    padding-left: 17px;
+  }
+    .post-user-content{
+      padding: 10px 15px;
+    }
+    .post-menu {
+      text-align: right;
+      padding: 5px 15px 10px 0;
+    }
+  }
+}

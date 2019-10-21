@@ -5,9 +5,12 @@ class PostsController < ApplicationController
   end
   
   def new
+    @post = Post.new
+    @movie = Movie.find(params[:id])
   end
 
   def create
+    
   end
 
   def edit
