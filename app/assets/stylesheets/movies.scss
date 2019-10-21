@@ -163,3 +163,40 @@
         border-bottom: none;
       }
   }
+  
+.post-index {
+  width: 90%;
+  float: left;
+  margin: 30px 10px;
+.post-content {
+  margin: 15px 0;
+  background-color: #EEEEEE;
+  border-radius: 2%;
+  hr {
+    margin: 7px 8px;
+  }
+  .post-user-name {
+    padding: 10px 0px 0px 20px;
+    a{
+      font-weight: 600;
+      font-size: 18px;
+      color: #000000;
+      &:hover{
+        color: #3ecdc6;
+      }
+    }
+  }
+  p {
+    margin-left: 5px;
+    font-size: 5px;
+    padding-left: 17px;
+  }
+    .post-user-content{
+      padding: 10px 15px;
+    }
+    .post-menu {
+      text-align: right;
+      padding: 5px 15px 10px 0;
+    }
+  }
+}

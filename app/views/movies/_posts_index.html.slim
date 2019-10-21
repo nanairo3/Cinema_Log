@@ -1,0 +1,16 @@
+.post-index
+  - @posts.each do |post|
+    - user = post.user
+    .post-content
+      user.image
+      .post-user-name
+        = link_to(user.name + "の感想", "/users/#{user.id}")
+      p
+        = post.updated_at
+      hr
+      .post-user-content
+        = post.content
+      .post-menu
+        - if current_user && (current_user.id == post.user_id)
+          = link_to "編集", edit_post_path(post.id)
+          = link_to "削除", post_path(post.id), method: :delete

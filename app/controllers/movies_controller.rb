@@ -5,5 +5,6 @@ class MoviesController < ApplicationController
 
   def show
     @movie = Movie.find(params[:id])
+    @posts = Post.where(movie_id: params[:id])
   end
 end
