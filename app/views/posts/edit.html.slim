@@ -7,5 +7,5 @@
         = message
     = form_with model: @post, url: post_path(@post.id), local: true do |f|
       = f.label :content, '投稿'
-      = f.text_field :content
+      = f.text_area :content
       = f.submit '更新する', class: "btn btn-primary"
