@@ -4,7 +4,7 @@
     .post-content
       user.image
       .post-user-name
-        = link_to(user.name + "の感想", "/users/#{user.id}")
+        = link_to("#{user.name}の感想", user_path(user.id))
       p
         = post.updated_at
       hr
