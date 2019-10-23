@@ -10,7 +10,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(content: params[:content], movie_id: params[:movie_id], user_id: current_user.id)
+    @post = current_user.posts.build(content: params[:content], movie_id: params[:movie_id])
     if @post.save
       flash[:notice] = '投稿を作成しました'
       redirect_to movie_path(params[:movie_id])
