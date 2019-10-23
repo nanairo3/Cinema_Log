@@ -15,7 +15,7 @@ class PostsController < ApplicationController
       flash[:notice] = '投稿を作成しました'
       redirect_to movie_path(params[:id])
     else
-      render('posts/new')
+      render :new
     end
   end
 
