@@ -20,11 +20,28 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @post = Post.find(params[:id])
   end
 
   def update
+    @post = Post.find(params[:id])
+    if @post.update(post_params_edit)
+      flash[:notice] = "投稿を更新しました"
+      redirect_to movie_path(@post.movie_id)
+    else
+      render :edit
+    end
   end
 
   def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    flash[:notice] = "投稿を削除しました"
+    redirect_to movie_path(@post.movie_id)
   end
+  
+  private
+    def post_params_edit
+      params.require(:post).permit(:content)
+    end
 end
