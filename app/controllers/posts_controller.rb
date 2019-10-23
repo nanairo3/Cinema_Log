@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   
   def index
   end
@@ -44,5 +45,13 @@ class PostsController < ApplicationController
   private
     def post_params_edit
       params.require(:post).permit(:content)
+    end
+    
+    def ensure_correct_user
+      @post = Post.find(params[:id])
+        if current_user.id != @post.user_id
+          flash[:notice] = "権限がありません"
+          redirect_to root_path
+        end
     end
 end
