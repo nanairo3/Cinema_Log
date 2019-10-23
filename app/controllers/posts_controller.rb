@@ -6,14 +6,14 @@ class PostsController < ApplicationController
   
   def new
     @post = Post.new
-    @movie = Movie.find(params[:id])
+    @movie = Movie.find(params[:movie_id])
   end
 
   def create
-    @post = Post.new(content: params[:content], movie_id: params[:id], user_id: current_user.id)
+    @post = Post.new(content: params[:content], movie_id: params[:movie_id], user_id: current_user.id)
     if @post.save
       flash[:notice] = '投稿を作成しました'
-      redirect_to movie_path(params[:id])
+      redirect_to movie_path(params[:movie_id])
     else
       render :new
     end

@@ -4,7 +4,7 @@
   .cinema-left-content
     .cinema-image
       = image_tag("https://image.tmdb.org/t/p/original#{@movie.poster_path}", :class => "img-responsive", :alt => "poster")
-      = link_to "/posts/#{@movie["id"]}/new", class: "btn-circle-3d", title: "コメントする！" do
+      = link_to new_movie_post_path(@movie.id), class: "btn-circle-3d", title: "コメントする！" do
         i.material-icons message
   .cinema-right-content
     = render 'movies/movie_detail'

@@ -8,7 +8,7 @@
       - @post.errors.full_messages.each do |message|
         .form-error
           = message
-      = form_with model: @post, url: "/posts/#{@movie.id}/create", local: true do |form|
+      = form_with model: @post, url: movie_posts_path, local: true do |form|
         = form.label :content, 'コメント'
         = form.text_area :content, name: "content"
         = form.submit "投稿", class: 'btn btn-primary'
