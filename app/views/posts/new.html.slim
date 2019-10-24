@@ -10,5 +10,5 @@
           = message
       = form_with model: @post, url: movie_posts_path, local: true do |form|
         = form.label :content, 'コメント'
-        = form.text_area :content, name: "content"
+        = form.text_area :content
         = form.submit "投稿", class: 'btn btn-primary'

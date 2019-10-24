@@ -23,7 +23,7 @@ class PostsController < ApplicationController
 
   def update
     @post = current_user.posts.find(params[:id])
-    if @post.update(post_params_edit)
+    if @post.update(post_params)
       flash[:notice] = "投稿を更新しました"
       redirect_to movie_path(@post.movie_id)
     else
@@ -40,10 +40,6 @@ class PostsController < ApplicationController
   private
   
     def post_params
-      params.permit(:content)
-    end
-    
-    def post_params_edit
       params.require(:post).permit(:content)
     end
 end
