@@ -6,8 +6,8 @@ class PostsController < ApplicationController
   end
   
   def new
-    @post = Post.new
     @movie = Movie.find(params[:movie_id])
+    @post = @movie.posts.build
   end
 
   def create
