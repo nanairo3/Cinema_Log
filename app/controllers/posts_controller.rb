@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
-  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   
   def index
   end
@@ -22,11 +21,11 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
+    @post = current_user.posts.find(params[:id])
   end
 
   def update
-    @post = Post.find(params[:id])
+    @post = current_user.posts.find(params[:id])
     if @post.update(post_params_edit)
       flash[:notice] = "投稿を更新しました"
       redirect_to movie_path(@post.movie_id)
@@ -50,13 +49,5 @@ class PostsController < ApplicationController
     
     def post_params_edit
       params.require(:post).permit(:content)
-    end
-    
-    def ensure_correct_user
-      @post = Post.find(params[:id])
-        if current_user.id != @post.user_id
-          flash[:notice] = "権限がありません"
-          redirect_to root_path
-        end
     end
 end
