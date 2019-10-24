@@ -7,6 +7,6 @@
       = link_to new_movie_post_path(@movie.id), class: "btn-circle-3d", title: "コメントする！" do
         i.material-icons message
   .cinema-right-content
-    = render 'movies/movie_detail'
+    = render partial: 'movie_detail'
 .cinema-post
-  = render 'movies/posts_index'
+  = render partial: 'posts_index', local: { posts: @posts }
