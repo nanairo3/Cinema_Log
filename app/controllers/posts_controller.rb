@@ -11,8 +11,9 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = current_user.posts.build(content: params[:content], movie_id: params[:movie_id])
     @movie = Movie.find(params[:movie_id])
+    @post = current_user.posts.build(post_params)
+    @post.movie = @movie
     if @post.save
       flash[:notice] = '投稿を作成しました'
       redirect_to movie_path(params[:movie_id])
@@ -43,6 +44,11 @@ class PostsController < ApplicationController
   end
   
   private
+  
+    def post_params
+      params.permit(:content)
+    end
+    
     def post_params_edit
       params.require(:post).permit(:content)
     end
