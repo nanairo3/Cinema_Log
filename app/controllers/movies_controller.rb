@@ -5,6 +5,6 @@ class MoviesController < ApplicationController
 
   def show
     @movie = Movie.find(params[:id])
-    @posts = @movie.posts
+    @posts = @movie.posts.includes(:user)
   end
 end
