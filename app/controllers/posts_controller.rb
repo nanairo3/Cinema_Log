@@ -15,8 +15,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
     @post.movie = @movie
     if @post.save
-      flash[:notice] = '投稿を作成しました'
-      redirect_to movie_path(params[:movie_id])
+      redirect_to movie_path(params[:movie_id]), notice: '投稿を作成しました'
     else
       render :new
     end
