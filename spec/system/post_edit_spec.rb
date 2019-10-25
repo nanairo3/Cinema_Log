@@ -35,15 +35,5 @@ describe '投稿編集機能', type: :system do
         expect(page).to  have_content 'Contentは500文字以内で入力してください'
       end
     end
-    
-    context '自分以外の投稿を編集しようとした場合' do
-      it '編集できず、rootページに遷移する' do
-        click_link 'Logout'
-        sign_in_as users[1]
-        visit edit_post_path(post)
-        expect(current_path).to eq root_path
-        expect(page).to have_content '権限がありません'
-      end
-    end
   end
 end
