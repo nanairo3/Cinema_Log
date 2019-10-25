@@ -31,9 +31,9 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    post = current_user.posts.find(params[:id])
-    post.destroy!
-    redirect_to movie_path(post.movie_id), notice: "投稿を削除しました"
+    @post = current_user.posts.find(params[:id])
+    @post.destroy!
+    redirect_to movie_path(@post.movie_id), notice: "投稿を削除しました"
   end
   
   private

@@ -10,7 +10,12 @@
       hr
       .post-user-content
         = post.content
-      .post-menu
-        - if current_user && (current_user.id == post.user_id)
-          = link_to "編集", edit_post_path(post.id)
-          = link_to "削除", post_path(post.id), method: :delete
+      .post-fotter
+        hr
+          .post-like
+            div id = "like-post-#{post.id}"
+              = render partial: 'like', locals: { post: post }
+          .post-menu
+            - if current_user && (current_user.id == post.user_id)
+              = link_to "編集", edit_post_path(post.id)
+              = link_to "削除", post_path(post.id), method: :delete
