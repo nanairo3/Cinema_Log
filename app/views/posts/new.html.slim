@@ -1,0 +1,14 @@
+.content1
+  = image_tag "https://image.tmdb.org/t/p/w200#{@movie.poster_path}"
+.content2
+  .form-heading
+    | 投稿する
+  .form
+    .form-body
+      - @post.errors.full_messages.each do |message|
+        .form-error
+          = message
+      = form_with model: @post, url: movie_posts_path, local: true do |form|
+        = form.label :content, 'コメント'
+        = form.text_area :content
+        = form.submit "投稿", class: 'btn btn-primary'

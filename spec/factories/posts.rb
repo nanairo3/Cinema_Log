@@ -1,0 +1,7 @@
+FactoryBot.define do
+  factory :post do
+    sequence(:content) { |n| "MyText#{n}" }
+    association :user
+    association :movie
+  end
+end

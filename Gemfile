@@ -80,3 +80,5 @@ gem "faraday-detailed_logger"
 gem 'whenever', require: false
 
 gem 'kaminari'
+
+gem 'material_icons'
