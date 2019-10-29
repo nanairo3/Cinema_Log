@@ -192,11 +192,19 @@
     padding-left: 17px;
   }
     .post-user-content{
-      padding: 10px 15px;
+      padding: 5px 15px 20px 30px;
     }
     .post-menu {
       text-align: right;
       padding: 5px 15px 10px 0;
     }
+  }
+  .post_like {
+    margin-left: 15px;
+    color: #696969;
+  }
+  .post_unlike {
+    margin-left: 15px;
+    color: #dc143c;
   }
 }
