@@ -6,6 +6,5 @@ class MoviesController < ApplicationController
   def show
     @movie = Movie.find(params[:id])
     @posts = @movie.posts.includes(:user)
-    @like = Like.new
   end
 end
