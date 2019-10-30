@@ -19,6 +19,6 @@ Rails.application.routes.draw do
   end
   delete '/posts/:post_id/likes' => 'likes#destroy'
 
-  
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

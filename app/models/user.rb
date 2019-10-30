@@ -11,4 +11,7 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :liked_posts, through: :likes, source: :post
   
+  def liked_by?(post)
+    self.likes.exists?(post: post)
+  end
 end
