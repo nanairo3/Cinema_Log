@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   end
 
   resources :posts do
-    resource :likes, only: [:create, :destroy]
+    resource :like, only: [:create, :destroy]
   end
 
 
