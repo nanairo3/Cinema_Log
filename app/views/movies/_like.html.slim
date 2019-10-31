@@ -1,4 +1,4 @@
-- if current_user.like?(post)
+- if current_user && current_user.like?(post)
   = link_to post_like_path(post), method: :delete, class: 'post_unlike', remote: true do
     = fa_icon('heart', type: :solid)
   = post.likes.count
