@@ -8,9 +8,9 @@ class PostsController < ApplicationController
 
   def create
     movie = Movie.find(params[:movie_id])
-    post = current_user.posts.build(post_params)
-    post.movie = movie
-    if post.save
+    @post = current_user.posts.build(post_params)
+    @post.movie = movie
+    if @post.save
       redirect_to movie_path(params[:movie_id]), notice: '投稿を作成しました'
     else
       render :new
