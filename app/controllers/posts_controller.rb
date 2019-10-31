@@ -22,9 +22,9 @@ class PostsController < ApplicationController
   end
 
   def update
-    post = current_user.posts.find(params[:id])
+    @post = current_user.posts.find(params[:id])
     if post.update(post_params)
-      redirect_to movie_path(post.movie_id), notice: "投稿を更新しました"
+      redirect_to movie_path(@post.movie_id), notice: "投稿を更新しました"
     else
       render :edit
     end
