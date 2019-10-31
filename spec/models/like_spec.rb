@@ -10,4 +10,16 @@ RSpec.describe Like, type: :model do
       it { expect(like).to be_valid }
     end
   end
+  
+  describe '異常系' do
+    context '複数件登録する場合' do
+      before{ create(:like, user: user, post: post) }
+      let!(:like){ build(:like, user: user, post: post) }
+      
+      it 'いいねを登録できない' do
+        like.valid?
+        expect(like.errors[:post_id]).to include('はすでに存在します')
+      end
+    end
+  end
 end
