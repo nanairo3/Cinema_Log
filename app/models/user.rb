@@ -8,5 +8,10 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 20 }
   
   has_one_attached :image
+  has_many :likes, dependent: :destroy
+  has_many :liked_posts, through: :likes, source: :post
   
+  def like?(post)
+    self.likes.exists?(post: post)
+  end
 end

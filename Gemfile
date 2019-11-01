@@ -82,3 +82,5 @@ gem 'whenever', require: false
 gem 'kaminari'
 
 gem 'material_icons'
+gem 'font_awesome5_rails'
+gem 'jquery-rails'

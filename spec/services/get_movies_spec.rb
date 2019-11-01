@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe '映画情報取得API' do
   describe '.api_execution' do
-    let!(:exist_movie) { create :movie }
+    let!(:exist_movie) { create :movie, id: 111111 }
     
     before do
       allow(MoviesAcquisitionApiSercvice).to receive(:get_movie_json) do |get_mode|

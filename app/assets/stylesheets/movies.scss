@@ -175,28 +175,56 @@
   hr {
     margin: 7px 8px;
   }
-  .post-user-name {
-    padding: 10px 0px 0px 20px;
-    a{
-      font-weight: 600;
-      font-size: 18px;
-      color: #000000;
-      &:hover{
-        color: #3ecdc6;
+  .post-content-header{
+    display: flex;
+    padding: 10px 4px 15px 10px;
+    border-radius: 2%;
+    .post-user-image{
+      img{
+        width: 50px;
+        height: 50px;
+      }
+    }
+    .post-user-name {
+      padding: 10px 0px 0px 20px;
+      a{
+        font-weight: 545;
+        font-size: 18px;
+        color: #333333;
+        &:hover{
+          color: #3ecdc6;
+        }
       }
     }
   }
   p {
-    margin-left: 5px;
     font-size: 5px;
-    padding-left: 17px;
   }
     .post-user-content{
-      padding: 10px 15px;
+      padding: 5px 15px 20px 30px;
     }
-    .post-menu {
-      text-align: right;
-      padding: 5px 15px 10px 0;
+    .post-fotter{
+      display: flex;
+      justify-content: space-between;
+      .post-menu {
+        text-align: right;
+        padding: 5px 15px 10px 0;
+        #post-edit{
+          color: #555555;
+        }
+        #post-delete{
+          margin-left: 4px;
+          color: #555555;
+        }
+      }
+      .post_like {
+        margin-left: 15px;
+        color: #696969;
+      }
+      .post_unlike {
+        margin-left: 15px;
+        color: #dc143c;
+      }
     }
   }
 }

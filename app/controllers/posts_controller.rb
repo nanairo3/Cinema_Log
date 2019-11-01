@@ -13,7 +13,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to movie_path(params[:movie_id]), notice: '投稿を作成しました'
     else
-      render :new
+      render :new, locals: { movie: @movie}
     end
   end
 
@@ -35,9 +35,9 @@ class PostsController < ApplicationController
     post.destroy!
     redirect_to movie_path(post.movie_id), notice: "投稿を削除しました"
   end
-  
+
   private
-  
+
     def post_params
       params.require(:post).permit(:content)
     end
