@@ -5,16 +5,17 @@ RUN apt-get update -qq && \
                        libpq-dev \
                        nodejs
 
-# 作業ディレクトリの作成、設定
 RUN mkdir /my_app
-##作業ディレクトリ名をAPP_ROOTに割り当てて、以下$APP_ROOTで参照
 ENV APP_ROOT /my_app
 WORKDIR $APP_ROOT
 
-# ホスト側（ローカル）のGemfileを追加する（ローカルのGemfileは【３】で作成）
-ADD ./Gemfile $APP_ROOT/Gemfile
-ADD ./Gemfile.lock $APP_ROOT/Gemfile.lock
-
-# Gemfileのbundle install
+COPY ./Gemfile $APP_ROOT/Gemfile
+COPY ./Gemfile.lock $APP_ROOT/Gemfile.lock
 RUN bundle install
-ADD . $APP_ROOT
+COPY . $APP_ROOT
+
+
+COPY entrypoint.sh /usr/bin/
+RUN chmod +x /usr/bin/entrypoint.sh
+ENTRYPOINT ["entrypoint.sh"]
+
