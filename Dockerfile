@@ -9,7 +9,7 @@ ENV APP_ROOT /my_app
 RUN mkdir $APP_ROOT
 WORKDIR $APP_ROOT
 
-COPY ./Gemfile $APP_ROOT/Gemfile
+COPY ./Gemfile $APP_ROOT
 COPY ./Gemfile.lock $APP_ROOT/Gemfile.lock
 RUN bundle install
 COPY . $APP_ROOT
