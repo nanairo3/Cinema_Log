@@ -14,5 +14,4 @@ COPY ./Gemfile.lock $APP_ROOT/Gemfile.lock
 RUN bundle install
 COPY . $APP_ROOT
 
-
-CMD ["initial_setting.sh"]
+CMD bin/initial_setting.sh
