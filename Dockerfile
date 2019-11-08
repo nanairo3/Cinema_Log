@@ -15,4 +15,4 @@ RUN bundle install
 COPY . $APP_ROOT
 
 
-ENTRYPOINT ["initial_setting.sh"]
+CMD ["initial_setting.sh"]
