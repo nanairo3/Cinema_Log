@@ -19,8 +19,6 @@ default: &default
 
 development:
   <<: *default
-  username: root
-  password: password
   database: environment_development
 
 # Warning: The database defined as "test" will be erased and
