@@ -14,4 +14,4 @@ COPY ./Gemfile.lock $APP_ROOT/Gemfile.lock
 RUN bundle install
 COPY . $APP_ROOT
 
-CMD bin/initial_setting.sh
+CMD bin/setup_rails.sh
