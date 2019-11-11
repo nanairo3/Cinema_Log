@@ -14,6 +14,10 @@ services:
       - .:/my_app
     ports:
       - "3000:3000"
+    environment:
+      - "DB_USERNAME=root"
+      - "DB_PASSWORD=password"
+      - "DB_HOST=db"
     links:
       - db
       - chrome
