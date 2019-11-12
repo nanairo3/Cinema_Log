@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'ユーザ編集機能', type: :system do
@@ -23,7 +25,7 @@ describe 'ユーザ編集機能', type: :system do
       end
     end
   end
-  
+
   describe '異常系' do
     context 'name未入力の場合' do
       it 'アカウント情報を変更できない' do
@@ -31,7 +33,7 @@ describe 'ユーザ編集機能', type: :system do
         click_button '更新'
         expect(page).to have_content 'Nameを入力してください'
       end
-      
+
       context 'email未入力の場合' do
         it 'アカウント情報を変更できない' do
           fill_in 'user_email', with: ''
@@ -39,35 +41,35 @@ describe 'ユーザ編集機能', type: :system do
           expect(page).to have_content 'Eメールを入力してください'
         end
       end
-    
+
       context '現在のパスワードが間違っている場合'
-        it 'アカウント情報を変更できない' do
-          fill_in 'user_current_password', with: '間違いpassword'
-          fill_in 'user_password', with: 'taropassword'
-          fill_in 'user_password_confirmation', with: 'taropassword'
-          click_button '更新'
-          expect(page).to have_content '現在のパスワードは不正な値です'
-        end
+      it 'アカウント情報を変更できない' do
+        fill_in 'user_current_password', with: '間違いpassword'
+        fill_in 'user_password', with: 'taropassword'
+        fill_in 'user_password_confirmation', with: 'taropassword'
+        click_button '更新'
+        expect(page).to have_content '現在のパスワードは不正な値です'
       end
-      
-      context '新しいパスワードと確認が間違っている場合' do
-        it 'アカウント情報を変更できない' do
-          fill_in 'user_current_password', with: 'apassword'
-          fill_in 'user_password', with: 'taropassword'
-          fill_in 'user_password_confirmation', with: '間違いpassword'
-          click_button '更新'
-          expect(page).to have_content 'パスワード（確認用）とパスワードの入力が一致しません'
-        end
+    end
+
+    context '新しいパスワードと確認が間違っている場合' do
+      it 'アカウント情報を変更できない' do
+        fill_in 'user_current_password', with: 'apassword'
+        fill_in 'user_password', with: 'taropassword'
+        fill_in 'user_password_confirmation', with: '間違いpassword'
+        click_button '更新'
+        expect(page).to have_content 'パスワード（確認用）とパスワードの入力が一致しません'
       end
-      
-      context '新しいパスワードが6文字未満の場合' do
-        it 'アカウント情報を変更できない' do
-          fill_in 'user_current_password', with: 'apassword'
-          fill_in 'user_password', with: '12345'
-          fill_in 'user_password_confirmation', with: '12345'
-          click_button '更新'
-          expect(page).to have_content 'パスワードは6文字以上で入力してください'
-        end
+    end
+
+    context '新しいパスワードが6文字未満の場合' do
+      it 'アカウント情報を変更できない' do
+        fill_in 'user_current_password', with: 'apassword'
+        fill_in 'user_password', with: '12345'
+        fill_in 'user_password_confirmation', with: '12345'
+        click_button '更新'
+        expect(page).to have_content 'パスワードは6文字以上で入力してください'
       end
     end
   end
+end

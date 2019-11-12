@@ -1,15 +1,15 @@
+# frozen_string_literal: true
+
 # Use this file to easily define all of your cron jobs.
 #
 # It's helpful, but not entirely necessary to understand cron before proceeding.
 # http://en.wikipedia.org/wiki/Cron
 
-
-
 set :environment, :development
-set :output, {:error => 'log/error.log', :standard => 'log/cron.log'}
+set :output, error: 'log/error.log', standard: 'log/cron.log'
 
 every :day, at: '4:00' do
-  runner "MovieInformationPeriodicallyImportBatch.exec"
+  runner 'MovieInformationPeriodicallyImportBatch.exec'
 end
 
 #
