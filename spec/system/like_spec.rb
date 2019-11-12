@@ -15,7 +15,7 @@ describe 'いいね機能', type: :system do
         visit movie_path(movie)
       end
       
-      context 'いいねをクリックした場合' do
+      context 'いいねをクリックした場合', js: true do
         it 'いいねできる' do
           find('.far').click
           expect(page).to have_css '.fas'
@@ -23,7 +23,7 @@ describe 'いいね機能', type: :system do
         end
       end
       
-      context 'いいねを削除した場合' do
+      context 'いいねを削除した場合', js: true do
         it 'いいねを取り消せる' do
           find('.far').click
           find('.fas').click
