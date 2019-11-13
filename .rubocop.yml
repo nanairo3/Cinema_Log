@@ -1,3 +1,16 @@
+require:
+  - rubocop-rails
+
+AllCops:
+  TargetRubyVersion: 2.6.3
+  Exclude:
+    - vendor/**/*
+    - db/schema.rb
+    - config/unicorn.rb
+    - config/unicorn_staging.rb
+    - tmp/**/*
+    - db/migrate/*
+
 # 日本語でのコメントを許可
 AsciiComments:
   Enabled: false
@@ -14,11 +27,3 @@ ClassAndModuleChildren:
 # クラスにコメントを残さない
 Documentation:
   Enabled: false
-
-
-AllCops:
-  Exclude:
-    - db/schema.rb
-    - config/unicorn.rb
-    - config/unicorn_staging.rb
-    - tmp/**/*
