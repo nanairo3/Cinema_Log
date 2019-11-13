@@ -14,5 +14,4 @@ class LikesController < ApplicationController
     like = current_user.likes.find_by(post: @post)
     like.destroy!
   end
-
 end

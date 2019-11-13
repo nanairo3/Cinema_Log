@@ -61,6 +61,5 @@ class MoviesAcquisitionApiSercvice
       )
       movie.save!
     end
-
   end
 end
