@@ -26,7 +26,7 @@ describe '新規投稿', type: :system do
       it '投稿できない' do
         fill_in 'post_content', with: ' '
         click_button '投稿'
-        expect(page).to  have_content 'Contentを入力してください'
+        expect(page).to have_content 'Contentを入力してください'
       end
     end
 

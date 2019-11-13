@@ -39,7 +39,7 @@ class MoviesAcquisitionApiSercvice
         response = CONNECTION.get "/3/movie/#{get_mode}" do |request|
           request.params[:api_key] = API_KEY
           request.params[:language] = LANGUAGE
-          request.params[:page] =  page
+          request.params[:page] = page
           request.params[:region] = REGION
         end
 
