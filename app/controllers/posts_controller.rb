@@ -13,7 +13,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to movie_path(params[:movie_id]), notice: '投稿を作成しました'
     else
-      render :new, locals: { movie: @movie}
+      render :new, locals: { movie: @movie }
     end
   end
 
