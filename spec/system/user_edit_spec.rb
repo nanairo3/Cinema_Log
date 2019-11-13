@@ -50,7 +50,7 @@ describe 'ユーザ編集機能', type: :system do
               click_button '更新'
               expect(page).to have_content '現在のパスワードは不正な値です'
             end
-          end
+        end
 
         context '新しいパスワードと確認が間違っている場合' do
           it 'アカウント情報を変更できない' do
@@ -71,5 +71,5 @@ describe 'ユーザ編集機能', type: :system do
             expect(page).to have_content 'パスワードは6文字以上で入力してください'
           end
         end
-      end
-  end
+    end
+end

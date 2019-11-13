@@ -37,5 +37,5 @@ describe 'ログイン機能', type: :system do
             expect(page).to have_content 'Eメールまたはパスワードが違います。'
           end
         end
-      end
-  end
+    end
+end
