@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe '映画ホームページ', type: :system do
-  let!(:example_movie){ create(:movie, poster_path: '/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg') }
+  let!(:example_movie) { create(:movie, poster_path: '/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg') }
   
   before do
     visit movie_path(example_movie)

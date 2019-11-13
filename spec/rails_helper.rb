@@ -31,7 +31,7 @@ rescue ActiveRecord::PendingMigrationError => e
   puts e.to_s.strip
   exit 1
 end
-Capybara.server_host = Socket.ip_address_list.detect{|addr| addr.ipv4_private?}.ip_address
+Capybara.server_host = Socket.ip_address_list.detect {|addr| addr.ipv4_private?}.ip_address
 Capybara.server_port = 3001
 
 Capybara.register_driver :selenium_remote do |app|

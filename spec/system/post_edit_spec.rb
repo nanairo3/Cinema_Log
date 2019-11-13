@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 describe '投稿編集機能', type: :system do
-  let!(:users){ create_list(:user, 2) }
-  let!(:post){ create(:post, user: users.first) }
+  let!(:users) { create_list(:user, 2) }
+  let!(:post) { create(:post, user: users.first) }
   
   before do
     sign_in_as users.first

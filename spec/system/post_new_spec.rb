@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 describe '新規投稿', type: :system do
-  let!(:user){ create(:user) }
-  let!(:movie){ create(:movie) }
+  let!(:user) { create(:user) }
+  let!(:movie) { create(:movie) }
   
   before do
     sign_in_as user

@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 describe 'いいね機能', type: :system do
-  let!(:user){ create(:user) }
-  let!(:movie){ create(:movie) }
-  let!(:post){ create(:post, movie: movie) }
+  let!(:user) { create(:user) }
+  let!(:movie) { create(:movie) }
+  let!(:post) { create(:post, movie: movie) }
 
   before do
     sign_in_as user
