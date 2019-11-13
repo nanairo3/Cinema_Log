@@ -3,15 +3,15 @@ require 'json'
 
 class MoviesAcquisitionApiSercvice
   API_KEY = Rails.application.credentials.api_key
-  LANGUAGE = "ja-JP"
+  LANGUAGE = 'ja-JP'
   PAGE = 1
-  REGION = "JP"
-  CONNECTION = Faraday.new("https://api.themoviedb.org")
+  REGION = 'JP'
+  CONNECTION = Faraday.new('https://api.themoviedb.org')
   
   class << self
     def import
-      json = get_movie_json("now_playing")
-      json += get_movie_json("upcoming")
+      json = get_movie_json('now_playing')
+      json += get_movie_json('upcoming')
       json.each do |json|
         get_movie_save(json)
       end
@@ -48,14 +48,14 @@ class MoviesAcquisitionApiSercvice
     end
     
     def get_movie_save(json)
-      movie = Movie.find_or_initialize_by(id: json["id"])
+      movie = Movie.find_or_initialize_by(id: json['id'])
       movie.assign_attributes(
-        title: json["title"] || "",
-        original_title: json["original_title"] || "",
-        poster_path: json["poster_path"] || "",
-        popularity: json["popularity"],
-        release_date: json["release_date"],
-        overview: json["overview"],
+        title: json['title'] || '',
+        original_title: json['original_title'] || '',
+        poster_path: json['poster_path'] || '',
+        popularity: json['popularity'],
+        release_date: json['release_date'],
+        overview: json['overview'],
       )
       movie.save!
     end

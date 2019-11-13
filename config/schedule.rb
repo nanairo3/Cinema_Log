@@ -9,7 +9,7 @@ set :environment, :development
 set :output, { :error => 'log/error.log', :standard => 'log/cron.log' }
 
 every :day, at: '4:00' do
-  runner "MovieInformationPeriodicallyImportBatch.exec"
+  runner 'MovieInformationPeriodicallyImportBatch.exec'
 end
 
 #

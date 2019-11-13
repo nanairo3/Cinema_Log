@@ -1,6 +1,6 @@
 class MoviesController < ApplicationController
   def index
-    @movies = Movie.where.not(poster_path: '').order(popularity: "DESC").page(params[:page]).per(12)
+    @movies = Movie.where.not(poster_path: '').order(popularity: 'DESC').page(params[:page]).per(12)
   end
 
   def show

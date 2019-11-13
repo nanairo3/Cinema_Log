@@ -37,7 +37,7 @@ RSpec.describe User, type: :model do
     end
     
     context 'nameが20文字以上の場合' do
-      let(:user) { build(:user, name: "a"*21) }
+      let(:user) { build(:user, name: 'a'*21) }
 
       it 'ユーザー登録できない' do
         user.valid?

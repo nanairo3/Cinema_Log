@@ -8,23 +8,23 @@ describe '映画情報取得API' do
       allow(MoviesAcquisitionApiSercvice).to receive(:get_movie_json) do |get_mode|
         if get_mode == 'now_playing'
           [{
-            "id" => 111111,
-            "title" =>"now_playing",
-            "original_title" => "now_playing",
-            "poster_path" => "1poster_path",
-            "popularity" => 1,
-            "release_date" => "1release_date",
-            "overview" => "1overview"
+            'id' => 111111,
+            'title' =>'now_playing',
+            'original_title' => 'now_playing',
+            'poster_path' => '1poster_path',
+            'popularity' => 1,
+            'release_date' => '1release_date',
+            'overview' => '1overview'
           }]
         elsif get_mode == 'upcoming'
           [{
-            "id" => 222222,
-            "title" =>"upcoming",
-            "original_title" => "upcoming",
-            "poster_path" => "2poster_path",
-            "popularity" => 1,
-            "release_date" => "2release_date",
-            "overview" => "2overview"
+            'id' => 222222,
+            'title' =>'upcoming',
+            'original_title' => 'upcoming',
+            'poster_path' => '2poster_path',
+            'popularity' => 1,
+            'release_date' => '2release_date',
+            'overview' => '2overview'
           }]
         end
       end

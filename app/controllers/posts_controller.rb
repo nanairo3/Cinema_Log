@@ -24,7 +24,7 @@ class PostsController < ApplicationController
   def update
     @post = current_user.posts.find(params[:id])
     if @post.update(post_params)
-      redirect_to movie_path(@post.movie_id), notice: "投稿を更新しました"
+      redirect_to movie_path(@post.movie_id), notice: '投稿を更新しました'
     else
       render :edit
     end
@@ -33,7 +33,7 @@ class PostsController < ApplicationController
   def destroy
     post = current_user.posts.find(params[:id])
     post.destroy!
-    redirect_to movie_path(post.movie_id), notice: "投稿を削除しました"
+    redirect_to movie_path(post.movie_id), notice: '投稿を削除しました'
   end
 
   private
