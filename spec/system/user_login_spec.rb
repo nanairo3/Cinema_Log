@@ -30,7 +30,7 @@ describe 'ログイン機能', type: :system do
             expect(page).to have_content 'Eメールまたはパスワードが違います。'
           end
         end
-  
+
         context '未入力の場合' do
           it 'should have_content Eメールまたはパスワードが違います' do
             click_button 'Login'
