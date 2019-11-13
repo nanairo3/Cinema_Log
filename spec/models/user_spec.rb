@@ -9,7 +9,7 @@ RSpec.describe User, type: :model do
       it { expect(user).to be_valid }
     end
   end
-  
+
    describe '異常系' do
     context 'emailがnilの場合' do
       let(:user) { build :user, email: nil }
@@ -19,7 +19,7 @@ RSpec.describe User, type: :model do
         expect(user.errors[:email]).to include('を入力してください')
       end
     end
-  
+
     context 'nameがnilの場合' do
       let(:user) { build :user, name: nil }
 
@@ -28,7 +28,7 @@ RSpec.describe User, type: :model do
         expect(user.errors[:name]).to include('を入力してください')
       end
     end
-  
+
     context 'passwordがnilの場合' do
       let(:user) { build :user, password: nil }
 
@@ -37,7 +37,7 @@ RSpec.describe User, type: :model do
         expect(user.errors[:password]).to include('を入力してください')
       end
     end
-    
+
     context 'nameが20文字以上の場合' do
       let(:user) { build(:user, name: 'a'*21) }
 
@@ -46,7 +46,7 @@ RSpec.describe User, type: :model do
         expect(user.errors[:name]).to include('は20文字以内で入力してください')
       end
     end
-  
+
     context 'passwordが6文字以下の場合' do
       let(:user) { build(:user, password: 'test') }
 
@@ -55,7 +55,7 @@ RSpec.describe User, type: :model do
         expect(user.errors[:password]).to include('は6文字以上で入力してください')
       end
     end
-  
+
     context 'emailがすでにある場合' do
       before { create(:user, email: 'test@example.com') }
       let(:user) { build(:user, email: 'test@example.com') }

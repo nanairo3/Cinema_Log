@@ -33,7 +33,7 @@ describe 'ユーザ新規登録', type: :system do
         expect(page).to have_content '保存されませんでした'
       end
     end
-    
+
     context 'passwordが６文字未満の場合' do
       it 'アカウント作成ができない' do
         fill_in '名前', with: ''
@@ -44,7 +44,7 @@ describe 'ユーザ新規登録', type: :system do
         expect(page).to have_content 'パスワードは6文字以上で入力してください'
       end
     end
-    
+
     context 'passwordとpassword_confirmationが異なる場合' do
       it 'アカウント作成ができない' do
         fill_in '名前', with: ''

@@ -5,7 +5,7 @@ require 'rails_helper'
 describe '映画情報取得API' do
   describe '.api_execution' do
     let!(:exist_movie) { create :movie, id: 111111 }
-    
+
     before do
       allow(MoviesAcquisitionApiSercvice).to receive(:get_movie_json) do |get_mode|
         if get_mode == 'now_playing'
@@ -33,7 +33,7 @@ describe '映画情報取得API' do
       expect(Movie.count).to eq 1
       MoviesAcquisitionApiSercvice.import
     end
-    
+
     it '映画数が全体で2件となっていること' do
       expect(Movie.count).to eq 2
     end
@@ -57,6 +57,6 @@ describe '映画情報取得API' do
       expect(update_movie.release_date).to eq '1release_date'
       expect(update_movie.overview).to eq '1overview'
     end
-    
+
   end
 end

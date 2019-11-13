@@ -9,7 +9,7 @@ describe 'ログイン機能', type: :system do
   before do
     visit new_user_session_path
   end
-  
+
   describe '正常系' do
     context '正しくemail、passwordを入力した場合' do
       it 'ログインできる' do
@@ -20,7 +20,7 @@ describe 'ログイン機能', type: :system do
       end
     end
   end
-  
+
   describe '異常系' do
     context '間違ったpasswordを入力した場合' do
       it 'ログインできない' do
@@ -30,7 +30,7 @@ describe 'ログイン機能', type: :system do
         expect(page).to have_content 'Eメールまたはパスワードが違います。'
       end
     end
-  
+
       context '未入力の場合' do
         it 'should have_content Eメールまたはパスワードが違います' do
           click_button 'Login'

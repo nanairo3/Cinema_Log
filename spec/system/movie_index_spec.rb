@@ -4,11 +4,11 @@ require 'rails_helper'
 
 describe '映画ホームページ', type: :system do
   let!(:example_movie) { create(:movie, id: 111111, poster_path: '/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg') }
-  
+
   before do
     visit root_path
   end
-  
+
   describe '正常系' do
     context '映画一覧が表示される場合' do
       it '映画一覧が表示される' do
@@ -16,7 +16,7 @@ describe '映画ホームページ', type: :system do
         expect(page).to have_content example_movie.title
       end
     end
-    
+
     context '映画画像をクリックした場合' do
       it '映画詳細画面へ遷移する' do
         click_on 'movie pic'
