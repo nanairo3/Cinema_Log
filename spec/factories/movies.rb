@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :movie do
     sequence(:id)  { |n| 11111 + n }
