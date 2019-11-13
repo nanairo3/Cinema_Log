@@ -30,6 +30,7 @@ class MoviesAcquisitionApiSercvice
       end
 
       raise "通信エラー： #{response.status}" unless response.success?
+
       count = JSON.parse(response.body)['total_pages']
       result = JSON.parse(response.body)['results']
       renge = 2..count
@@ -43,6 +44,7 @@ class MoviesAcquisitionApiSercvice
         end
 
         raise "通信エラー: #{response.status}" unless response.success?
+
         result.push(JSON.parse(response.body)['results'])
       end
 
