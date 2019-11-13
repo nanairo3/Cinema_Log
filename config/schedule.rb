@@ -6,7 +6,7 @@
 # http://en.wikipedia.org/wiki/Cron
 
 set :environment, :development
-set :output, :error => 'log/error.log', :standard => 'log/cron.log'
+set :output, error: 'log/error.log', standard: 'log/cron.log'
 
 every :day, at: '4:00' do
   runner 'MovieInformationPeriodicallyImportBatch.exec'
