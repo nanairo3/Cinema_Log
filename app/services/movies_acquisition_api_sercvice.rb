@@ -14,8 +14,8 @@ class MoviesAcquisitionApiSercvice
     def import
       json = get_movie_json('now_playing')
       json += get_movie_json('upcoming')
-      json.each do |json|
-        get_movie_save(json)
+      json.each do |movie_info|
+        get_movie_save(movie_info)
       end
     end
 

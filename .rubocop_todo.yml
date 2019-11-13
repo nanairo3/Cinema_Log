@@ -8,9 +8,9 @@
 
 
 # Offense count: 1
-Lint/ShadowingOuterLocalVariable:
-  Exclude:
-    - 'app/services/movies_acquisition_api_sercvice.rb'
+# Lint/ShadowingOuterLocalVariable:
+#   Exclude:
+#     - 'app/services/movies_acquisition_api_sercvice.rb'
 
 # Offense count: 1
 Lint/UselessAssignment:
