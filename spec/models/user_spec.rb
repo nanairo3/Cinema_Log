@@ -11,14 +11,14 @@ RSpec.describe User, type: :model do
   end
 
   describe '異常系' do
-   context 'emailがnilの場合' do
-     let(:user) { build :user, email: nil }
+    context 'emailがnilの場合' do
+      let(:user) { build :user, email: nil }
 
-     it 'ユーザー登録できない' do
-       user.valid?
-       expect(user.errors[:email]).to include('を入力してください')
-     end
-   end
+      it 'ユーザー登録できない' do
+        user.valid?
+        expect(user.errors[:email]).to include('を入力してください')
+      end
+    end
 
    context 'nameがnilの場合' do
      let(:user) { build :user, name: nil }

@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 describe 'ログイン機能', type: :system do
-    let!(:user) { create(:user) }
+  let!(:user) { create(:user) }
     let!(:test_user) { create(:user) }
 
     before do
@@ -22,14 +22,14 @@ describe 'ログイン機能', type: :system do
     end
 
     describe '異常系' do
-        context '間違ったpasswordを入力した場合' do
-          it 'ログインできない' do
-            fill_in 'session_email', with: user.email
-            fill_in 'session_password', with: 'nonpassword'
-            click_button 'Login'
-            expect(page).to have_content 'Eメールまたはパスワードが違います。'
-          end
+      context '間違ったpasswordを入力した場合' do
+        it 'ログインできない' do
+          fill_in 'session_email', with: user.email
+          fill_in 'session_password', with: 'nonpassword'
+          click_button 'Login'
+          expect(page).to have_content 'Eメールまたはパスワードが違います。'
         end
+      end
 
         context '未入力の場合' do
           it 'should have_content Eメールまたはパスワードが違います' do
