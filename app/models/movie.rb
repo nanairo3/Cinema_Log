@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Movie < ApplicationRecord
-  has_many :movie_genres, foreign_key: 'movie_id'
+  has_many :movie_genres, foreign_key: 'movie_id', dependent: :destroy
   has_many :genres, through: :movie_genres
 
   has_many :posts, dependent: :destroy

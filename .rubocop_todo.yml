@@ -8,11 +8,6 @@
 
 
 # Offense count: 1
-# Lint/ShadowingOuterLocalVariable:
-#   Exclude:
-#     - 'app/services/movies_acquisition_api_sercvice.rb'
-
-# Offense count: 1
 Lint/UselessAssignment:
   Exclude:
     - 'spec/rails_helper.rb'
@@ -35,10 +30,10 @@ Metrics/MethodLength:
 # Offense count: 2
 # Configuration parameters: Include.
 # Include: app/models/**/*.rb
-Rails/HasManyOrHasOneDependent:
-  Exclude:
-    - 'app/models/genre.rb'
-    - 'app/models/movie.rb'
+# Rails/HasManyOrHasOneDependent:
+#   Exclude:
+#     - 'app/models/genre.rb'
+#     - 'app/models/movie.rb'
 
 # Offense count: 2
 # Configuration parameters: Include.
