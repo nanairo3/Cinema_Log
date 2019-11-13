@@ -59,7 +59,7 @@ class MoviesAcquisitionApiSercvice
         poster_path: json['poster_path'] || '',
         popularity: json['popularity'],
         release_date: json['release_date'],
-        overview: json['overview'],
+        overview: json['overview']
       )
       movie.save!
     end
