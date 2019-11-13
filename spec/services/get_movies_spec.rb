@@ -57,6 +57,5 @@ describe '映画情報取得API' do
       expect(update_movie.release_date).to eq '1release_date'
       expect(update_movie.overview).to eq '1overview'
     end
-
   end
 end
