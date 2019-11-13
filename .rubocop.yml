@@ -1,11 +1,13 @@
+require:
+  - rubocop-rails
+  
 AllCops:
   TargetRubyVersion: 2.6.3
   Exclude:
     - vendor/**/*
     - db/schema.rb
-    - config/unicorn.rb
-    - config/unicorn_staging.rb
     - tmp/**/*
+    - db/migrate/*
 
 # 日本語でのコメントを許可
 AsciiComments:
@@ -26,4 +28,7 @@ Documentation:
   
 # "Missing top-level class documentation comment."を無効
 Style/Documentation:
+  Enabled: false
+
+Style/MixinUsage:
   Enabled: false
