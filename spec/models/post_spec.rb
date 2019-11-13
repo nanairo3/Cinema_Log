@@ -20,7 +20,7 @@ RSpec.describe Post, type: :model do
     end
 
     context 'contentが500文字以上の場合' do
-      let(:post) { build :post, content: 'a'*501 }
+      let(:post) { build :post, content: 'a' * 501 }
       it '投稿できない'do
         post.valid?
         expect(post.errors[:content]).to include('は500文字以内で入力してください')

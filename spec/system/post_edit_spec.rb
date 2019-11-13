@@ -32,7 +32,7 @@ describe '投稿編集機能', type: :system do
 
     context '自分の投稿を500文字以上で更新した場合' do
       it '編集できない' do
-        fill_in 'post_content', with: 'a'*501
+        fill_in 'post_content', with: 'a' * 501
         click_button '更新する'
         expect(page).to have_content 'Contentは500文字以内で入力してください'
       end

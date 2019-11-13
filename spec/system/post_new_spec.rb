@@ -32,7 +32,7 @@ describe '新規投稿', type: :system do
 
     context 'contentが500文字以上の場合' do
       it '投稿できない' do
-        fill_in 'post_content', with: 'a'*501
+        fill_in 'post_content', with: 'a' * 501
         click_button '投稿'
         expect(page).to have_content 'Contentは500文字以内で入力してください'
       end

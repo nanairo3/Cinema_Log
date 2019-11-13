@@ -11,7 +11,7 @@ describe '映画情報取得API' do
         if get_mode == 'now_playing'
           [{
             'id' => 111_111,
-            'title' =>'now_playing',
+            'title' => 'now_playing',
             'original_title' => 'now_playing',
             'poster_path' => '1poster_path',
             'popularity' => 1,
@@ -21,7 +21,7 @@ describe '映画情報取得API' do
         elsif get_mode == 'upcoming'
           [{
             'id' => 222_222,
-            'title' =>'upcoming',
+            'title' => 'upcoming',
             'original_title' => 'upcoming',
             'poster_path' => '2poster_path',
             'popularity' => 1,
