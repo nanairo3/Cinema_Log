@@ -4,13 +4,13 @@ require 'rails_helper'
 
 describe '映画情報取得API' do
   describe '.api_execution' do
-    let!(:exist_movie) { create :movie, id: 111111 }
+    let!(:exist_movie) { create :movie, id: 111_111 }
 
     before do
       allow(MoviesAcquisitionApiSercvice).to receive(:get_movie_json) do |get_mode|
         if get_mode == 'now_playing'
           [{
-            'id' => 111111,
+            'id' => 111_111,
             'title' =>'now_playing',
             'original_title' => 'now_playing',
             'poster_path' => '1poster_path',
@@ -20,7 +20,7 @@ describe '映画情報取得API' do
           }]
         elsif get_mode == 'upcoming'
           [{
-            'id' => 222222,
+            'id' => 222_222,
             'title' =>'upcoming',
             'original_title' => 'upcoming',
             'poster_path' => '2poster_path',
@@ -39,7 +39,7 @@ describe '映画情報取得API' do
     end
 
     it 'APIで追加したデータが、正しく保存されていること' do
-      add_movie = Movie.find(222222)
+      add_movie = Movie.find(222_222)
       expect(add_movie.title).to eq 'upcoming'
       expect(add_movie.original_title).to eq 'upcoming'
       expect(add_movie.poster_path).to eq '2poster_path'
@@ -49,7 +49,7 @@ describe '映画情報取得API' do
     end
 
     it '既存の映画レコードが更新されていること' do
-      update_movie = Movie.find(111111)
+      update_movie = Movie.find(111_111)
       expect(update_movie.title).to eq 'now_playing'
       expect(update_movie.original_title).to eq 'now_playing'
       expect(update_movie.poster_path).to eq '1poster_path'
