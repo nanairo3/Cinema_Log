@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class PostsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
-  
+  before_action :authenticate_user!, only: %i[new create edit update destroy]
+
   def new
     @movie = Movie.find(params[:movie_id])
     @post = @movie.posts.build
@@ -13,7 +15,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to movie_path(params[:movie_id]), notice: '投稿を作成しました'
     else
-      render :new, locals: { movie: @movie}
+      render :new, locals: { movie: @movie }
     end
   end
 
@@ -24,7 +26,7 @@ class PostsController < ApplicationController
   def update
     @post = current_user.posts.find(params[:id])
     if @post.update(post_params)
-      redirect_to movie_path(@post.movie_id), notice: "投稿を更新しました"
+      redirect_to movie_path(@post.movie_id), notice: '投稿を更新しました'
     else
       render :edit
     end
@@ -33,12 +35,12 @@ class PostsController < ApplicationController
   def destroy
     post = current_user.posts.find(params[:id])
     post.destroy!
-    redirect_to movie_path(post.movie_id), notice: "投稿を削除しました"
+    redirect_to movie_path(post.movie_id), notice: '投稿を削除しました'
   end
 
   private
 
-    def post_params
-      params.require(:post).permit(:content)
-    end
+  def post_params
+    params.require(:post).permit(:content)
+  end
 end
