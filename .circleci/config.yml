@@ -52,4 +52,7 @@ workflows:
   version: 2
   build_deploy:
     jobs:
-      - rspec
+      - rubocop
+      - rspec:
+          requires:
+            - rubocop
