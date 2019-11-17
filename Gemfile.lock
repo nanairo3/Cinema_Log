@@ -293,10 +293,6 @@ GEM
       activemodel (>= 5.0)
       bindex (>= 0.4.0)
       railties (>= 5.0)
-    webdrivers (4.1.2)
-      nokogiri (~> 1.6)
-      rubyzip (~> 1.0)
-      selenium-webdriver (>= 3.0, < 4.0)
     websocket-driver (0.7.1)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.4)
@@ -336,6 +332,7 @@ DEPENDENCIES
   rubocop (~> 0.74.0)
   rubocop-rails
   sassc-rails
+  selenium-webdriver
   slim-rails
   spring
   spring-watcher-listen (~> 2.0.0)
@@ -343,7 +340,6 @@ DEPENDENCIES
   tzinfo-data
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)
-  webdrivers
   whenever
 
 RUBY VERSION
