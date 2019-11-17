@@ -5,6 +5,7 @@ RUN apt-get update -qq && \
                        libpq-dev \
                        nodejs
 
+RUN apt-get update -qq && apt-get install -y nodejs chromium-driver
 ENV APP_ROOT /my_app
 RUN mkdir $APP_ROOT
 WORKDIR $APP_ROOT
