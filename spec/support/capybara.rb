@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Capybara.server = :puma, { Silent: true }
 
 Capybara.register_driver :chrome_headless do |app|
