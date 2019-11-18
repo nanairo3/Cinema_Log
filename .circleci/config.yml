@@ -29,6 +29,8 @@ commands:
           paths:
             - ./vendor/bundler
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+orbs:
+  heroku: circleci/heroku@0.0.8
 
 jobs:
   rubocop:
@@ -47,6 +49,14 @@ jobs:
           background: true
       - run: bundle exec rake db:create db:migrate
       - run: bundle exec rspec
+  deploy:
+    executor: heroku/default
+    steps:
+      - checkout
+      - heroku/install
+      - heroku/deploy-via-git:
+          only-branch: master
+
 
 workflows:
   version: 2
@@ -56,3 +66,6 @@ workflows:
       - rspec:
           requires:
             - rubocop
+      - deploy:
+          requires:
+            - rspec
