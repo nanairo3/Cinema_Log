@@ -16,9 +16,14 @@ executors:
           MYSQL_HOST: 127.0.0.1
           MYSQL_USERNAME: root
           MYSQL_ROOT_PASSWORD: password
-commands:
-  setting:
+orbs:
+  heroku: circleci/heroku@0.0.8
+
+jobs:
+  rubocop_and_rspec:
+    executor: default
     steps:
+      - checkout
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "Gemfile.lock" }}
@@ -29,21 +34,13 @@ commands:
           paths:
             - ./vendor/bundler
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
-orbs:
-  heroku: circleci/heroku@0.0.8
-
-jobs:
-  rubocop_and_rspec:
-    executor: default
-    steps:
-      - checkout
-      - setting
       - run: bundle exec rubocop
       - run:
           command: chromedriver
           background: true
       - run: bundle exec rake db:create db:migrate
       - run: bundle exec rspec
+
   deploy:
     executor: heroku/default
     steps:
