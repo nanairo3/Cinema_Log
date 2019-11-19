@@ -17,7 +17,7 @@ executors:
           MYSQL_USERNAME: root
           MYSQL_ROOT_PASSWORD: password
 commands:
-  bundle_install:
+  setting:
     steps:
       - restore_cache:
           keys:
@@ -33,17 +33,12 @@ orbs:
   heroku: circleci/heroku@0.0.8
 
 jobs:
-  rubocop:
+  rubocop_and_rspec:
     executor: default
     steps:
       - checkout
-      - bundle_install
+      - setting
       - run: bundle exec rubocop
-  rspec:
-    executor: default
-    steps:
-      - checkout
-      - bundle_install
       - run:
           command: chromedriver
           background: true
@@ -62,10 +57,10 @@ workflows:
   version: 2
   build_deploy:
     jobs:
-      - rubocop
-      - rspec:
-          requires:
-            - rubocop
+      - rubocop_and_rspec
       - deploy:
           requires:
-            - rspec
+            - rubocop_and_rspec
+          filters:
+            branches:
+              only: master
