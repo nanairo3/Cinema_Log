@@ -336,6 +336,7 @@ DEPENDENCIES
   rubocop (~> 0.74.0)
   rubocop-rails
   sassc-rails
+  selenium-webdriver
   slim-rails
   spring
   spring-watcher-listen (~> 2.0.0)

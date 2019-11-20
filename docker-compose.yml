@@ -19,10 +19,5 @@ services:
       DB_USERNAME: root
       DB_PASSWORD: password
       DB_HOST: db
-    links:
+    depends_on:
       - db
-      - chrome
-  chrome:
-    image: selenium/standalone-chrome:3.141.59-dubnium
-    ports:
-      - 4444:4444

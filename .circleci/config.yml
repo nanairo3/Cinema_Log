@@ -1,0 +1,63 @@
+version: 2.1
+
+executors:
+  default:
+    docker:
+      - image: circleci/ruby:2.6.3-node-browsers
+        environment:
+          BUNDLER_VERSION: 1.17.3
+          RAILS_ENV: test
+          DB_HOST: 127.0.0.1
+          DB_USERNAME: root
+          DB_PASSWORD: password
+      - image: circleci/mysql:5.7-ram
+        command: --default-authentication-plugin=mysql_native_password
+        environment:
+          MYSQL_HOST: 127.0.0.1
+          MYSQL_USERNAME: root
+          MYSQL_ROOT_PASSWORD: password
+orbs:
+  heroku: circleci/heroku@0.0.8
+
+jobs:
+  rubocop_and_rspec:
+    executor: default
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "Gemfile.lock" }}
+            - v1-dependencies-
+      - run: bundle install --path vendor/bundle
+      - run: yarn install
+      - save_cache:
+          paths:
+            - ./vendor/bundler
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+      - run: bundle exec rubocop
+      - run:
+          command: chromedriver
+          background: true
+      - run: bundle exec rake db:create db:migrate
+      - run: bundle exec rspec
+
+  deploy:
+    executor: heroku/default
+    steps:
+      - checkout
+      - heroku/install
+      - heroku/deploy-via-git:
+          only-branch: master
+
+
+workflows:
+  version: 2
+  build_deploy:
+    jobs:
+      - rubocop_and_rspec
+      - deploy:
+          requires:
+            - rubocop_and_rspec
+          filters:
+            branches:
+              only: master
