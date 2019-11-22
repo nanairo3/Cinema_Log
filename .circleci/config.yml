@@ -49,7 +49,6 @@ jobs:
       - heroku/deploy-via-git:
           only-branch: master
       - run: heroku run rake db:migrate
-      - run: heroku run rails runner MoviesAcquisitionApiSercvice.import
 
 workflows:
   version: 2
