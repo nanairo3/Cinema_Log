@@ -47,7 +47,7 @@ jobs:
       - checkout
       - heroku/install
       - heroku/deploy-via-git:
-          only-branch: master
+          only-branch: feature/#32_circleci_error_fix
       - run: heroku run bundle exec rake db:migrate --app cinema-logs
 
 workflows:
@@ -60,4 +60,4 @@ workflows:
             - rubocop_and_rspec
           filters:
             branches:
-              only: master
+              only: feature/#32_circleci_error_fix
