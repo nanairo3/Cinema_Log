@@ -8,4 +8,5 @@
       = f.label :password, 'パスワード'
       = f.password_field :password,autocomplete: "current-password", id: 'session_password'
       = f.submit 'Login', class: 'btn btn-primary'
+    = render partial: 'users/shared/instant_login', locals: {user: @user}
     = link_to("新規登録", new_user_registration_path, class: "seesion-new")
