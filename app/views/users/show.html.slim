@@ -1,5 +1,5 @@
 .user
-  - if current_user.image.attached? 
+  - if current_user.image&.attached? 
     = image_tag current_user.image
   - else
     = image_tag "boy.png"
