@@ -7,7 +7,7 @@
 
 ## heroku URL
 ```url
-https://cinema-log.herokuapp.com/
+https://cinema-logs.herokuapp.com/
 ```
 
 ## 機能
