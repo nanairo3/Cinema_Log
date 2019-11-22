@@ -48,7 +48,7 @@ jobs:
       - heroku/install
       - heroku/deploy-via-git:
           only-branch: master
-      - run: heroku run rake db:migrate
+      - run: heroku run bundle exec rake db:migrate --app cinema-logs
 
 workflows:
   version: 2
