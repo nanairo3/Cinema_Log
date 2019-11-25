@@ -27,5 +27,7 @@
         = f.password_field :password_confirmation, autocomplete: "new-password"
       .actions
         = f.submit "Sign up"
-    = render partial: 'users/shared/instant_login', locals: {user: @user}
     = render "users/shared/links"
+    div.instant-login
+      = render partial: 'users/shared/instant_login', locals: {user: @user}
+    
