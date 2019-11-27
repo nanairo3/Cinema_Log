@@ -1,15 +1,14 @@
 .form-heading.seesion-new-heading
   | Login
 .form
-  div.form-body
-    div
-      = form_with model: @user, url: user_session_path, id: 'new_user', class: 'new_user', local: true do |f|
-        = f.label :email, 'メールアドレス'
-        = f.text_field :email, autofocus: true, autocomplete: "email", id: 'session_email'
-        = f.label :password, 'パスワード'
-        = f.password_field :password,autocomplete: "current-password", id: 'session_password'
-        = f.submit 'Login', class: 'btn btn-primary'
-      = link_to("新規登録", new_user_registration_path, class: "seesion-new")
-    div.instant-login
+  .form-body
+    = form_with model: @user, url: user_session_path, id: 'new_user', class: 'new_user', local: true do |f|
+      = f.label :email, 'メールアドレス'
+      = f.text_field :email, autofocus: true, autocomplete: "email", id: 'session_email'
+      = f.label :password, 'パスワード'
+      = f.password_field :password,autocomplete: "current-password", id: 'session_password'
+      = f.submit 'Login', class: 'btn btn-primary'
+    = link_to("新規登録", new_user_registration_path, class: "seesion-new")
+    .instant-login
       = render partial: 'users/shared/instant_login', locals: {user: @user}
     

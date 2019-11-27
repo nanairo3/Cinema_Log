@@ -28,6 +28,6 @@
       .actions
         = f.submit "Sign up"
     = render "users/shared/links"
-    div.instant-login
+    .instant-login
       = render partial: 'users/shared/instant_login', locals: {user: @user}
     
