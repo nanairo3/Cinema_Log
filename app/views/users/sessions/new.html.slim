@@ -9,3 +9,6 @@
       = f.password_field :password,autocomplete: "current-password", id: 'session_password'
       = f.submit 'Login', class: 'btn btn-primary'
     = link_to("新規登録", new_user_registration_path, class: "seesion-new")
+    .instant-login
+      = render partial: 'users/shared/instant_login', locals: {user: @user}
+    

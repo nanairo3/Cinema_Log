@@ -1,9 +1,10 @@
 # CinemaLog
 
 ## 概要
-映画の共有SNSです。上映中と上映予定の映画を表示しており、映画に対してコメントできるようになっています。
-
+就職活動用に映画の共有SNSを開発いたしました上映中と上映予定の映画を表示しており、
+映画に対してコメントできるようになっています。
 今後は、映画を行きたい人同士でマッチングできる機能を追加していきたいです！
+また、ポートフォリオを簡単に見て頂けるように簡単ログイン機能を追加しております。
 
 ## heroku URL
 ```url
@@ -21,6 +22,9 @@ https://cinema-logs.herokuapp.com/
   - 新規投稿
   - 投稿編集・削除
   - 投稿一覧表示
+- 映画情報管理
+  - TMDbという外部APIから情報を取得
+  - 1日1回情報を更新(開発環境：cron 本番：heroku_scheduler)
 
 ## 使用技術
 - 言語
@@ -31,7 +35,6 @@ https://cinema-logs.herokuapp.com/
   - mysql
 - フロントエンド
   - slim
-  - Bootstrap4
   - Material icon
   - Sass
 - デプロイ環境（CI/CD）
@@ -42,7 +45,7 @@ https://cinema-logs.herokuapp.com/
   - devise（ユーザー認証）
   - RSpec（単体テスト・結合テスト）
   - kaminari(ページネイション)
-  - faraday
+  - faraday(HTTPクライアントライブラリ)
 
 ## 今後、挑戦したこと
 - AWS（ECR、ECS、RDS、Route53、ELB）で構築
