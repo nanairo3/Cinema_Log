@@ -13,6 +13,8 @@ gem 'mysql2', '~> 0.5.2'
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
 gem 'sassc-rails'
+gem 'materialize-sass'
+gem 'material_icons' 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
