@@ -6,7 +6,7 @@ class SearchController < ApplicationController
   LANGUAGE = 'ja-JP'
   PAGE = 1
   REGION = 'JP'
-  CONNECTION = Faraday.new('https://api.themoviedb.org')
+  CONNECTION = Faraday.new('https://api.themoviedb.org/3/search/movie')
 
   def index
   end
@@ -18,16 +18,18 @@ class SearchController < ApplicationController
       if movies.present?
         movies.each do |movie|
           movie_data = Movie_data.new(
-            movie["title"]
-            movie["poster_path"]
-            movie["popularity"]
-            movie["release_date"]
-            movie["overview"]
-            movie["video_key"]
+            movie["title"],
+            movie["poster_path"],
+            movie["popularity"],
+            movie["release_date"],
+            movie["overview"],
+            movie["video_key"],
             movie["run_time"]
           )
           @movies << movie_data
         end
+
+        render action: :index
       else
         flash[:alert] = "検索結果がありませんでした"
         redirect_to root_path
@@ -41,14 +43,13 @@ class SearchController < ApplicationController
   private
 
     def get_search_movie_json(keyword)
-      response = CONNECTION.get "search/movie" do |request|
+      response = CONNECTION.get do |request|
         request.params[:api_key] = API_KEY
         request.params[:language] = LANGUAGE
         request.params[:query] = keyword
         request.params[:page] = PAGE
         request.params[:include_adult] = false
       end
-
       if response.success?
         result = JSON.parse(response.body)['results']
       else

@@ -3,6 +3,8 @@
 Rails.application.routes.draw do
   root 'movies#index'
 
+  get 'search' => 'search#search'
+
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions'
