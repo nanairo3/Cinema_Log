@@ -1,1 +1,12 @@
-h1 index#search
+.about-main
+  #search_box
+    = form_with url: search_path, method: :get, local: true do |f|
+      p
+        = f.text_field :keyword, placeholder: "映画のタイトルを入力してください"
+      p
+        = f.submit 'Search'
+  .cinema-index-item
+    h2.cinema-heading
+      | 検索結果
+    - @movies.each do |movie|
+      = render 'movies/movie', movie: movie

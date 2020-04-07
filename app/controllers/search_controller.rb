@@ -28,7 +28,6 @@ class SearchController < ApplicationController
           )
           @movies << movie_data
         end
-
         render action: :index
       else
         flash[:alert] = "検索結果がありませんでした"

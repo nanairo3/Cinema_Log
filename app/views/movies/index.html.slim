@@ -9,25 +9,6 @@
     h2.cinema-heading
       | 注目の映画
     - @movies.each do |movie|
-      .cinema_image
-        = link_to movie_path(movie) do
-          - if movie.release_date.to_date > Date.today
-            - if movie.poster_path == ''
-              = image_tag "no_image", class: "img-responsive", alt: "movie pic"
-            - else
-              = image_tag "https://image.tmdb.org/t/p/w200#{movie.poster_path}",class: "img-responsive", alt: "movie pic"
-            .caption
-              p
-                = movie.title
-          - else
-            - if movie.poster_path == ''
-              = image_tag "no_image", class: "img-responsive", alt: "movie pic"
-            - else
-              = image_tag "https://image.tmdb.org/t/p/w200#{movie.poster_path}",class: "img-responsive", alt: "movie pic"
-            .cinema_image_now
-              = image_tag "上映中.png", class: "now-img", alt: "movie pic"
-            .caption
-              p
-                = movie.title
+      = render 'movies/movie', movie: movie
     h5.cinema-heading
       = paginate @movies
