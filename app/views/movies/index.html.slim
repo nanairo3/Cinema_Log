@@ -1,5 +1,5 @@
 .about-main
-  #serch_box
+  #search_box
     = form_with url: search_index_path, method: :get, local: true do |f|
       p
         = f.text_field :keyword, placeholder: "映画のタイトルを入力してください"
