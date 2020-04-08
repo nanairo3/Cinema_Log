@@ -14,20 +14,17 @@ class SearchController < ApplicationController
   def search
     if params[:keyword]
       movies = get_search_movie_json(params[:keyword])
-      @movies = []
+      # @movies = []
+      search_result_id = []
       if movies.present?
+        # note:検索結果を全てDBに保存しており、効率が悪い
+        # note:showで表示したものだけを保存したほうが良いのかも
         movies.each do |movie|
-          movie_data = Movie_data.new(
-            movie["title"],
-            movie["poster_path"],
-            movie["popularity"],
-            movie["release_date"],
-            movie["overview"],
-            movie["video_key"],
-            movie["run_time"]
-          )
-          @movies << movie_data
+          MoviesAcquisitionApiSercvice.get_movie_save(movie)
+          search_result_id.push(movie['id'])
         end
+        # note:もっと綺麗な書き方がありそう。。。
+        @movies = Movie.where(id: search_result_id).where.not(poster_path: '')
         render action: :index
       else
         flash[:alert] = "検索結果がありませんでした"
@@ -56,19 +53,5 @@ class SearchController < ApplicationController
       end
       
       result.flatten
-    end
-
-    class Movie_data
-      attr_accessor :title, :poster_path, :popularity, :release_date,
-        :overview, :video_key, :run_time
-      def initialize(title, poster_path, popularity, release_date, overview, video_key, run_time)
-        @title = title
-        @poster_path = poster_path
-        @popularity = popularity
-        @release_date = release_date
-        @overview = overview
-        @video_key = video_key
-        @run_time = run_time
-      end
     end
 end

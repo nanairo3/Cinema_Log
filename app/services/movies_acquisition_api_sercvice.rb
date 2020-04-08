@@ -19,6 +19,19 @@ class MoviesAcquisitionApiSercvice
       end
     end
 
+    def get_movie_save(json)
+      movie = Movie.find_or_initialize_by(id: json['id'])
+      movie.assign_attributes(
+        title: json['title'] || '',
+        original_title: json['original_title'] || '',
+        poster_path: json['poster_path'] || '',
+        popularity: json['popularity'],
+        release_date: json['release_date'],
+        overview: json['overview']
+      )
+      movie.save!
+    end
+
     private
 
     def get_movie_json(get_mode)
@@ -49,19 +62,6 @@ class MoviesAcquisitionApiSercvice
       end
 
       result.flatten
-    end
-
-    def get_movie_save(json)
-      movie = Movie.find_or_initialize_by(id: json['id'])
-      movie.assign_attributes(
-        title: json['title'] || '',
-        original_title: json['original_title'] || '',
-        poster_path: json['poster_path'] || '',
-        popularity: json['popularity'],
-        release_date: json['release_date'],
-        overview: json['overview']
-      )
-      movie.save!
     end
   end
 end
