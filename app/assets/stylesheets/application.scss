@@ -29,13 +29,6 @@
 //   letter-spacing: 1px;
 // }
 
-ul, li {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-
 
 h1, h2, h3, h4, h5, h6, p {
   margin: 0;
@@ -71,81 +64,6 @@ body {
     object-fit: cover;
   }
 }
-// .main {
-//   position: absolute;
-//   top: 64px;
-//   width: 100%;
-//   height: auto;
-//   min-height: 100%;
-//   background-color: #8f8e8e;
-// }
-
-// .container {
-//   max-width: 1000px;
-//   margin: 60px auto;
-//   padding-left: 15px;
-//   padding-right: 15px;
-//   clear: both;
-// }
-
-/* ヘッダー ================================ */
-
-// header {
-//   height: 64px;
-//   position: fixed;
-//   background-color: #043c78;
-//   z-index: 1;
-//   width: 100%;
-
-//   .header-logo {
-//     float: left;
-//     padding-left: 20px;
-//     color: white;
-//     font-size: 22px;
-//     line-height: 64px;
-//     a{
-//       color: white;
-//       font-size: 22px;
-//     }
-//   }
-  
-//   .header-menus {
-//     float: right;
-//     padding-right: 20px;
-//     li {
-//       float: left;
-//       line-height: 64px;
-//       font-size: 13px;
-//       color: white;
-//       padding-left: 15px;
-//     }
-//     a {
-//       float: left;
-//       font-size: 13px;
-//       color: white;
-//     }
-//     .fa {
-//       padding-right: 5px;
-//     }
-//     input[type="submit"] {
-//       padding: 0 20px;
-//       float: left;
-//       line-height: 64px;
-//       color: white;
-//       margin: 0;
-//       font-size: 13px;
-//     }
-//   .plofile_image{
-//     img {
-//       width: 35px;
-//       height: 35px;
-//       border-radius: 50%;
-//       object-fit: cover;
-//       margin-top: 15px;
-//     }
-//     }
-//   }
-// }
 
 /* フラッシュ ================================ */
 .flash {
