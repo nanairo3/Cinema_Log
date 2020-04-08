@@ -1,4 +1,4 @@
-ul#dropdown1.dropdown-content
+ul#dropdown1.header-dropdown.dropdown-content
   li
     = link_to current_user.name, user_path(current_user)
   li
@@ -6,7 +6,7 @@ ul#dropdown1.dropdown-content
 nav.blue.darken-4
   .nav-wrapper
     .brand-logo
-      = link_to "Cinema Log", root_path
+      = link_to "Cinema Log", root_path, class: "logo"
     ul.right.hide-on-med-and-down
       li
         = link_to "映画一覧", root_path
