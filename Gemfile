@@ -12,9 +12,9 @@ gem 'mysql2', '~> 0.5.2'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
-gem 'sassc-rails'
+gem 'material_icons'
 gem 'materialize-sass'
-gem 'material_icons' 
+gem 'sassc-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -43,11 +43,11 @@ gem 'rails-i18n'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'byebug'
   gem 'factory_bot_rails', '~> 4.11'
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'rspec-rails', '~> 3.7'
-  gem 'byebug'
 end
 
 group :development do
@@ -89,4 +89,3 @@ gem 'kaminari'
 
 gem 'font_awesome5_rails'
 gem 'jquery-rails'
-gem 'material_icons'

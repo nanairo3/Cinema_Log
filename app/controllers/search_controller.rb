@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SearchController < ApplicationController
   require 'faraday'
   require 'json'
@@ -8,8 +10,7 @@ class SearchController < ApplicationController
   REGION = 'JP'
   CONNECTION = Faraday.new('https://api.themoviedb.org/3/search/movie')
 
-  def index
-  end
+  def index; end
 
   def search
     if params[:keyword]
@@ -27,31 +28,31 @@ class SearchController < ApplicationController
         @movies = Movie.where(id: search_result_id).where.not(poster_path: '')
         render action: :index
       else
-        flash[:alert] = "検索結果がありませんでした"
+        flash[:alert] = '検索結果がありませんでした'
         redirect_to root_path
       end
     else
-      flash["alert"] = "検索ワードを入力してください"
+      flash['alert'] = '検索ワードを入力してください'
       redirect_to root_path
     end
   end
 
   private
 
-    def get_search_movie_json(keyword)
-      response = CONNECTION.get do |request|
-        request.params[:api_key] = API_KEY
-        request.params[:language] = LANGUAGE
-        request.params[:query] = keyword
-        request.params[:page] = PAGE
-        request.params[:include_adult] = false
-      end
-      if response.success?
-        result = JSON.parse(response.body)['results']
-      else
-        result = []
-      end
-      
-      result.flatten
+  def get_search_movie_json(keyword)
+    response = CONNECTION.get do |request|
+      request.params[:api_key] = API_KEY
+      request.params[:language] = LANGUAGE
+      request.params[:query] = keyword
+      request.params[:page] = PAGE
+      request.params[:include_adult] = false
     end
+    result = if response.success?
+               JSON.parse(response.body)['results']
+             else
+               []
+             end
+
+    result.flatten
+  end
 end
