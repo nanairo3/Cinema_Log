@@ -15,5 +15,9 @@ describe 'serach', type: :system, js: true do
       click_link "movie-id_454626"
       expect(page).to have_content "原題：Sonic the Hedgehog"
     end
+    context "検索ワードを入力しない場合" do
+      it '検索ワードを入力してくださいと'
+    end
+    
   end
 end

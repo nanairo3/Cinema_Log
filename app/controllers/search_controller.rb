@@ -27,7 +27,6 @@ class SearchController < ApplicationController
       @movies = Movie.where(id: search_result_id).where.not(poster_path: '')
       render action: :index
     else
-      flash['alert'] = '検索ワードを入力してください'
       redirect_to root_path
     end
   end
