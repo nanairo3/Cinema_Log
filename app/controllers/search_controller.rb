@@ -13,24 +13,19 @@ class SearchController < ApplicationController
   def index; end
 
   def search
-    if params[:keyword]
+    if params[:keyword].present?
       movies = get_search_movie_json(params[:keyword])
       # @movies = []
       search_result_id = []
-      if movies.present?
-        # note:検索結果を全てDBに保存しており、効率が悪い
-        # note:showで表示したものだけを保存したほうが良いのかも
-        movies.each do |movie|
-          MoviesAcquisitionApiSercvice.get_movie_save(movie)
-          search_result_id.push(movie['id'])
-        end
-        # note:もっと綺麗な書き方がありそう。。。
-        @movies = Movie.where(id: search_result_id).where.not(poster_path: '')
-        render action: :index
-      else
-        flash[:alert] = '検索結果がありませんでした'
-        redirect_to root_path
+      # note:検索結果を全てDBに保存しており、効率が悪い
+      # note:showで表示したものだけを保存したほうが良いのかも
+      movies.each do |movie|
+        MoviesAcquisitionApiSercvice.get_movie_save(movie)
+        search_result_id.push(movie['id'])
       end
+      # note:もっと綺麗な書き方がありそう。。。
+      @movies = Movie.where(id: search_result_id).where.not(poster_path: '')
+      render action: :index
     else
       flash['alert'] = '検索ワードを入力してください'
       redirect_to root_path

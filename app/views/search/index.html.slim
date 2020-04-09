@@ -3,5 +3,8 @@
   .cinema-index-item
     h2.cinema-heading
       | 検索結果
-    - @movies.each do |movie|
-      = render 'movies/movie', movie: movie
+    - if @movies.present?
+      - @movies.each do |movie|
+        = render 'movies/movie', movie: movie
+    - else
+      h5 検索結果がありません
