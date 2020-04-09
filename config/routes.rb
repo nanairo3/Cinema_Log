@@ -3,6 +3,8 @@
 Rails.application.routes.draw do
   root 'movies#index'
 
+  get 'search' => 'search#search'
+
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions'
@@ -19,6 +21,8 @@ Rails.application.routes.draw do
   resources :posts do
     resource :like, only: %i[create destroy]
   end
+
+  resources :search, only: %i[index]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

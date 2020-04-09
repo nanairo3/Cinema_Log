@@ -1,0 +1,10 @@
+.about-main
+  = render 'search/search'
+  .cinema-index-item
+    h2.cinema-heading
+      | 検索結果
+    - if @movies.present?
+      - @movies.each do |movie|
+        = render 'movies/movie', movie: movie
+    - else
+      h5 検索結果がありません

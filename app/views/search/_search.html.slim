@@ -1,0 +1,8 @@
+#search_box.center-align
+  = form_with url: search_path, method: :get, local: true do |f|
+      .row.center-align
+        .input-field
+          i.material-icons.prefix search
+          = f.text_field :keyword, class: "materialize-textarea", id: "icon_prefix2"
+          label[for="icon_prefix2"]
+            | 映画のタイトルを入力してください

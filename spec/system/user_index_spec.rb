@@ -12,8 +12,8 @@ describe 'ユーザ一覧機能', type: :system do
   describe '正常系' do
     context 'ユーザ一覧が表示される場合' do
       it 'ユーザ一覧が表示される' do
-        link = find('a', text: 'ユーザ一覧')
-        link.click
+        click_link 'header-dropdown_list'
+        click_link 'ユーザ一覧'
         expect(page).to have_content users[0].name
         expect(page).to have_content users[1].name
         expect(page).to have_content users[2].name
@@ -22,8 +22,8 @@ describe 'ユーザ一覧機能', type: :system do
 
     context 'ユーザ一覧でユーザ名をクリックした場合' do
       it 'クリックしたユーザ名が表示される' do
-        link = find('a', text: 'ユーザ一覧')
-        link.click
+        click_link 'header-dropdown_list'
+        click_link 'ユーザ一覧'
         link = find('a', text: users[1].name)
         link.click
         expect(page).to have_content users[1].name
