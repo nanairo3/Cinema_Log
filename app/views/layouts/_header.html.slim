@@ -1,8 +1,10 @@
 - if user_signed_in?
-  ul#dropdown1.header-dropdown.dropdown-content
-    li
+  ul#dropdown1.dropdown-content
+    li#header-dropdown-1
       = link_to current_user.name, user_path(current_user)
-    li
+    li#header-dropdown-2
+      = link_to "ユーザ一覧", users_path
+    li#header-dropdown-3
       = link_to "Logout", destroy_user_session_path, method: :delete
 nav.blue.darken-4
   .nav-wrapper
@@ -19,7 +21,7 @@ nav.blue.darken-4
             - else
               = image_tag "boy.png", class: "circle responsive-img"
         li
-          a.dropdown-trigger[href="#!" data-target="dropdown1"]
+          a#header-dropdown_list.dropdown-trigger[href="#!" data-target="dropdown1"]
             i.material-icons
               | more_vert
       - else
