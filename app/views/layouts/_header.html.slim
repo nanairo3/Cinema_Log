@@ -1,8 +1,9 @@
-ul#dropdown1.header-dropdown.dropdown-content
-  li
-    = link_to current_user.name, user_path(current_user)
-  li
-    = link_to "Logout", destroy_user_session_path, method: :delete
+- if user_signed_in?
+  ul#dropdown1.header-dropdown.dropdown-content
+    li
+      = link_to current_user.name, user_path(current_user)
+    li
+      = link_to "Logout", destroy_user_session_path, method: :delete
 nav.blue.darken-4
   .nav-wrapper
     .brand-logo

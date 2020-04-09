@@ -9,7 +9,9 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
     = render 'layouts/header'
-    = render 'layouts/flash'
+    #index-banner.section.no-pad-bot
+      .container
+        = render 'layouts/flash'
     .container
       .section
         = yield
