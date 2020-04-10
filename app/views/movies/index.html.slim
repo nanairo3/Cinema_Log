@@ -1,9 +1,10 @@
 .about-main
   = render 'search/search'
-  .cinema-index-item
+  .cinema-index-item.center-align
     h2.cinema-heading
       | 注目の映画
-    - @movies.each do |movie|
-      = render 'movies/movie', movie: movie
+    .row
+      - @movies.each do |movie|
+        = render 'movies/movie', movie: movie
     h5.cinema-heading
       = paginate @movies

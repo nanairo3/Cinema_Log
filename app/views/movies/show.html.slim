@@ -1,12 +1,10 @@
 = provide(:title, "#{@movie.title}")
 = provide(:title, "#{@movie.original_title}")
-.cinema-show-content
-  .cinema-left-content
-    .cinema-image
-      = image_tag("https://image.tmdb.org/t/p/original#{@movie.poster_path}", :class => "img-responsive", :alt => "poster")
+.row
+  .col.s6
+    = image_tag("https://image.tmdb.org/t/p/original#{@movie.poster_path}", :class => "responsive-img", :alt => "poster")
       = link_to new_movie_post_path(@movie.id), class: "btn-circle-3d", title: "コメントする！" do
         i.material-icons message
-  .cinema-right-content
-    = render partial: 'movie_detail'
-.cinema-post
-  = render partial: 'posts_index', locals: { posts: @posts }
+  .col.s6
+      = render partial: 'movie_detail'
+= render partial: 'posts_index', locals: { posts: @posts }
